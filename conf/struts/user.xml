@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="user" namespace="/" extends="struts-default">
+        
+        <global-results>
+		    <result name="error">/WEB-INF/jsp/main/error.jsp</result>
+	     </global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+        
+<!--         <action name="showUserGift" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="metooShowUserGiftView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_gift.jsp</result> -->
+<!--          </action> -->
+        
+<!--          <action name="showUserCertificate" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="metooShowUserCertificateView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_certificate_view.jsp</result> -->
+<!--          </action> -->
+        
+<!--          <action name="userSharePartsIndex" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUserShareSinglePartsIndexView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_share_parts_index.jsp</result> -->
+<!--          </action> -->
+        
+<!--          <action name="showNewRssMessage" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkShowNewRssMessageView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_new_rss_message.jsp</result> -->
+<!--          </action> -->
+           
+<!--           <action name="showUserRssSubject" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkShowUserRssSubjectView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_rss_subject.jsp</result> -->
+<!--          </action> -->
+        
+<!--           <action name="showUserJoinSubject" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkShowUserJoinSubjectView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_join_subject.jsp</result> -->
+<!--         </action> -->
+        
+<!--          <action name="userSeeMessageDetail" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUserSeeMessageDetail"> -->
+<!--             <result name="part" type="redirect">showPartDetailFromMessageRedrict?target=${target}</result> -->
+<!--             <result name="subject" type="redirect">subjectCommentsText</result> -->
+<!--              <result name="error" type="redirect">userIndex</result> -->
+<!--         </action> -->
+        
+<!--          <action name="redictToSeeMessage" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkRedictToSeeMessage"> -->
+<!--              <result name="success" type="redirect">subjectCommentsText</result> -->
+<!--          </action> -->
+        
+        <!-- part消息提示 -->
+<!--         <action name="redictToSeePartMessage" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkRedictToSeePartMessage"> -->
+<!--             <result name="success" type="redirect">userIndex</result> -->
+<!--         </action> -->
+        
+<!--         <action name="redictToSeeSubjectMessage" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkRedictToSeeSubjectMessage"> -->
+<!--             <result name="success" type="redirect">subjectCommentsText</result> -->
+<!--             <result name="error" >/WEB-INF/jsp/public/error.jsp</result> -->
+<!--         </action> -->
+       
+        
+<!--         <action name="redictToSeePartMessage" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkRedictToSeePartMessage"> -->
+<!--             <result name="success" type="redirect">showPartDetailFromMessageRedrict?target=${target}</result> -->
+<!--         </action> -->
+        
+        
+<!--          <action name="updateUserView" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUpdateUserView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_update_info.jsp</result> -->
+<!--         </action> -->
+        
+<!--          <action name="updateUserView" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUpdateUserView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_update_info.jsp</result> -->
+<!--         </action> -->
+        
+<!--         <action name="updateUserPassword" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUpdateUserPassword"> -->
+<!--             <result name="success" type="redirect">userIndex</result> -->
+<!--             <result name="error">/WEB-INF/jsp/user/user_login.jsp</result> -->
+<!--         </action> -->
+        
+        <action name="userSharePartsView" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooUserSharePartsView">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_share_parts.jsp</result>
+        </action>
+        
+        
+        <action name="userIndex" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooUserIndexView">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_index.jsp</result>
+             <result name="error">/WEB-INF/jsp/user/metoo_user_login.jsp</result>
+        </action>
+        
+        <action name="loginView" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooShowUserLoginView">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_login.jsp</result>
+        </action>
+        
+        <action name="loginIn" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooUserLoginIn">
+            <result name="success" type="redirect">userIndex</result>
+            <result name="error">/WEB-INF/jsp/user/metoo_user_login.jsp</result>
+        </action>
+        
+        <action name="LoadMoreUserShareParts" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooLoadMoreUserShareParts">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_share_parts_load_more.jsp</result>
+        </action>
+        
+        
+<!--         <action name="userLoginOut" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUserLoginOut"> -->
+<!--             <result name="success" type="redirect">loginOutView</result> -->
+<!--         </action> -->
+        
+         <action name="registerView" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooUserRegisterView">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_register.jsp</result>
+        </action>
+        
+        <action name="userRegister" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooUserRegister">
+            <param name="savePath">/saveImage</param>
+			<result name="success" type="redirect">userIndex</result>
+			<result name="input">/WEB-INF/jsp/user/metoo_user_register.jsp</result>
+			<result name="error">/WEB-INF/jsp/user/metoo_user_register.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2025956</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+        </action>
+        
+<!--          <action name="userUpdateInfo" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUserUpdateInfo"> -->
+            
+<!--             <param name="savePath">/saveImage</param> -->
+<!-- 			<result name="success" type="redirect">userIndex</result> -->
+<!-- 			<result name="input">/WEB-INF/jsp/user/user_update_info.jsp</result> -->
+<!-- 			<result name="error">/WEB-INF/jsp/user/user_update_info.jsp</result> -->
+<!-- 			<interceptor-ref name="fileUpload"> -->
+<!-- 				<param name="maximumSize">2025956</param> -->
+<!-- 			</interceptor-ref> -->
+<!-- 			<interceptor-ref name="defaultStack" /> -->
+<!--         </action> -->
+        
+        
+<!--         <action name="userIndex" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUserIndexView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_subject_index.jsp</result> -->
+<!--             <result name="error">/WEB-INF/jsp/user/user_login.jsp</result> -->
+<!--         </action> -->
+        
+<!--         <action name="userCollectIndex" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkUserCollectIndexView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_collect_parts_index.jsp</result> -->
+<!--             <result name="error">/WEB-INF/jsp/user/user_login.jsp</result> -->
+<!--         </action> -->
+        
+<!--         <action name="userFoucsView" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkShowUserFoucsView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_foucs.jsp</result> -->
+<!--         </action> -->
+        
+<!--          <action name="userFollowersView" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!--             method="mxkShowUserFollowersView"> -->
+<!--             <result name="success" >/WEB-INF/jsp/user/user_followors.jsp</result> -->
+<!--         </action> -->
+        
+    </package>
+
+    <package name="userajax"  namespace="/" extends="json-default">
+    
+<!--        <action name="createUserCollect" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkCreateUserCollectAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">message</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="removeUserCollect" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkRemoveUserCollectAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">message</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="createUserRelation" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkCreateUserRelationAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">message</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="seachUser" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkSeachUserAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">searchUserResponse</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="loadMoreUserSubject" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkLoadMoreUserSubjectAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">subjectsShowResponse</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="loadMoreNewRssMessage" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkLoadMoreNewRssMessageAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">partShowResponse</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="seachUserFriends" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkSeachUserFriends"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">searchUserResponse</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="loadMoreMessage" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkLoadMoreMessageAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">loadUserMessageRespone</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="filterUserCollect" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkFilterUserCollectAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">partShowResponse</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+    
+<!--        <action name="loadMoreUserCollect" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkLoadMoreUserCollectAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">partShowResponse</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+    
+<!--        <action name="loadMoreUserJoinSubject" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkLoadMoreUserJoinSubjectAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">subjectsShowResponse</param> -->
+<!--             </result>   -->
+<!-- 	   </action> -->
+    
+<!--        <action name="loadMoreRssSubject" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkLoadMoreRssSubjectAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">subjectsShowResponse</param> -->
+<!--             </result>   -->
+<!-- 	   </action> -->
+    
+    
+<!--       <action name="loadUserShareSinglePartsIndex" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="mxkLoadUserShareSinglePartsIndexAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">partShowResponse</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+    
+<!--     <action name="metooUpgradeUserTile" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="metooUpgradeUserTileAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">message</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+    
+    
+<!--     <action name="refreshUserStatus" class="com.mxk.org.web.user.action.MxkUserAction" -->
+<!-- 			method="metooRefreshUserStatusAjax"> -->
+<!-- 		    <result type="json" name="success">   -->
+<!--                  <param name="root">message</param> -->
+<!--             </result>   -->
+<!-- 		</action> -->
+    
+   </package>
+   
+   
+</struts>

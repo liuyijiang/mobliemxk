@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="comments" namespace="/" extends="struts-default">
+        
+        <global-results>
+		    <result name="error">/WEB-INF/jsp/main/error.jsp</result>
+	     </global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+        
+        <action name="addVoiceComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="mxkAddVoiceComments">
+            <result name="success" ></result>
+        </action>
+        
+    </package>
+
+    <package name="commentsajax"  namespace="/" extends="json-default">
+    
+		<action name="addTextComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="mxkAddTextCommentsAjax">
+            <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+        </action>
+        
+        <action name="loadTrageComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="mxkLoadTrageCommentsAjax">
+            <result type="json" name="success">  
+                 <param name="root">loadCommentsRespone</param>
+            </result>  
+        </action>
+        
+        <action name="deleteComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="mxkDeleteCommentsAjax">
+            <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+        </action>
+        
+        <action name="sendGift" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="metooSendGiftAjax">
+            <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+        </action>
+        
+        <action name="setPoint" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="metooSetPointAjax">
+            <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+        </action>
+        
+        <action name="setLike" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="metooLikeThisAjax">
+            <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+        </action>
+        
+        <action name="findLikeThisByPage" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooFindLikeThisByPageAjax">
+			<result type="json">
+				<param name="root">likeInfoResponse</param>
+			</result>
+		</action>
+		
+		<action name="findSendGiftByPage" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooFindSendGiftByPageAjax">
+			<result type="json">
+				<param name="root">giftInfoResponse</param>
+			</result>
+		</action>
+		
+		<action name="findUserAllGift" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooFindUserAllGiftAjax">
+			<result type="json">
+				<param name="root">giftInfoResponse</param>
+			</result>
+		</action>
+		
+		<action name="findSetPointByPage" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooFindSetPointByPageAjax">
+			<result type="json">
+				<param name="root">pointInfoResponse</param>
+			</result>
+		</action>
+		
+		<action name="setPriceToSubject" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="metooSetPriceToSubjectAjax">
+            <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+        </action>
+		
+		<action name="findSetPriceToSubjectByPage" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooFindSetPriceToSubjectByPageAjax">
+			<result type="json">
+				<param name="root">priceResponse</param>
+			</result>
+		</action>
+		
+   </package>
+   
+   
+</struts>

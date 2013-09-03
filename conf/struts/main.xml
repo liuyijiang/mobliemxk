@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <package name="main" namespace="/" extends="struts-default">
+        
+        <global-results>
+		    <result name="error">/WEB-INF/jsp/main/error.jsp</result>
+	     </global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+        
+         <action name="updateSubjectgsss" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="updateSubjectActionss">
+            <result name="success" >/WEB-INF/jsp/main/show_register.jsp</result>
+         </action> 
+        
+        <action name="showRegist" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="mxkShowRegist">
+            <result name="success" >/WEB-INF/jsp/main/show_register.jsp</result>
+         </action> 
+        
+        <action name="userShowNewMessageOfCom" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="mxkUserShowNewMessageOfComView">
+            <result name="success" >/WEB-INF/jsp/part/part_comments.jsp</result>
+         </action> 
+        
+        <action name="userShowNewMessageOfSubjectCom" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="mxkUserShowNewMessageOfSubjectComView">
+            <result name="success" >WEB-INF/jsp/subject/subject_comments.jsp</result>
+         </action> 
+        
+         <action name="loginOutView" class="com.mxk.org.web.main.action.MxkMainAction"
+            method="mxkLoginOutView">
+             <result name="success" >/WEB-INF/jsp/main/index.jsp</result>
+         </action>
+        
+        <action name="testStyle" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="mxkTestStyle">
+            <result name="success">/WEB-INF/jsp/main/test.jsp</result>
+         </action> 
+        
+        <action name="index" class="com.mxk.org.web.main.action.MxkMainAction"
+            method="mxkIndex">
+            <result name="userindex" type="redirect">userIndex</result>
+            <result name="index" type="redirect">partDashBoard</result>
+        </action>
+         
+         <action name="showChangePasswordView" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="mxkShowChangePasswordView">
+            <result name="success">/WEB-INF/jsp/main/change_password.jsp</result>
+         </action> 
+         
+         <action name="showHelp" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="mxkShowHelpView">
+            <result name="success">/WEB-INF/jsp/main/help.jsp</result>
+         </action> 
+         
+         <action name="testMail" class="com.mxk.org.web.main.action.MxkMainAction" 
+             method="mxkTestMail">
+            <result name="success">/WEB-INF/jsp/main/help.jsp</result>
+         </action>
+         
+    </package>
+
+    <package name="mainajax"  namespace="/" extends="json-default">
+    
+   		<action name="registerCheck" class="com.mxk.org.web.main.action.MxkMainAction"
+			method="mxkRegisterCheckAjax">
+		    <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+		</action>
+		
+		<action name="sendChangePasswordMail" class="com.mxk.org.web.main.action.MxkMainAction"
+			method="mxkSendChangePasswordMailAjax">
+		    <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+		</action>
+   		
+   </package>
+   
+   
+</struts>
