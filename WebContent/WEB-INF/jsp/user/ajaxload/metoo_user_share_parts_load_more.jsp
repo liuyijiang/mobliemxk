@@ -13,7 +13,7 @@
 			             <span class="label label-important">最高评分${options.highPoint }</span>
 			           </c:if>
 			       </span>
-			       <a href="<%=rootPath %>/visitorShowPartsDetailView?target=${options.id }">
+			       <a href="<%=rootPath %>/partDetail?target=${options.id }">
 			         <img src="<%=imgurl %>${options.minimage}" />
 			       </a>
 			   </div>

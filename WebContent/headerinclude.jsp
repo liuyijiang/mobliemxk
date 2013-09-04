@@ -15,4 +15,5 @@ var path = '<%=rootPath%>';
 var imgurl = '<%=imgurl %>';
 var voice = '<%=voice %>';
 var metoogift = '<%=metoogift%>';
+var filterType = '';
 </script>

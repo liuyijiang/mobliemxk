@@ -14,19 +14,16 @@
     </div>
 </div>
 <div class="container">
-  <span class="pull-left" id="partTitle"><strong>我的单图分享</strong></span>
+  <span class="pull-left" id="partTitle"><strong>所有模型</strong></span>
   <span class="pull-right text-success" id="partTitle"><strong>总页数${allpage }|当前<span id="currentpage">1</span></strong></span>
 </div>
 <div id="partsdivshow" class="container">
 </div>
-<c:if test="${allpage > 1 }">
 <%@ include file="../public/metoo_mobile_public_footer.jsp"%>
-</c:if>
 <%@ include file="../../../basefootinclude.jsp"%>  
  <script type="text/javascript">
    var allpage = '${allpage-1}';
    var page = 0;  
-   var userid= '${uservo.id}';
    function loadMore(isNext){
 	   $("#loaddiv").show();
 	   number = parseInt(page);
@@ -38,8 +35,8 @@
    			page = 1;
    		   }
        }
-	   var datas = {"searchPartRequest.subjectid":"#","searchPartRequest.userid":userid,"searchPartRequest.page":page};
-	   $("#partsdivshow").load(path +'/loadMoreUserShareParts',datas,function() {
+	   var datas = {"visitorSeeSubjectDashBoardRequest.page":page};
+	   $("#partsdivshow").load(path +'/loadMoreSubjectByPage',datas,function() {
 	    	$("#loaddiv").hide();
 	    	$("#currentpage").html(page);
 	    	window.scrollTo(0,0);

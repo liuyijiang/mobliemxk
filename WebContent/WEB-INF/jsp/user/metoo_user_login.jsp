@@ -4,6 +4,21 @@
 <html lang="en">
 <head>
  <%@ include file="../../../headerinclude.jsp"%>
+ <style type="text/css">
+   audio
+{
+-webkit-transition:all 0.5s linear;
+-moz-transition:all 0.5s linear;
+-o-transition:all 0.5s linear;
+transition:all 0.5s linear;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;
+border-radius:7px 7px 7px 7px ;
+width:100px;
+height:28px;
+}
+ 
+ </style>
 </head>
 <body class="mxkbody">
 <div class="navbar navbar-inverse navbar-fixed-top" style="opacity: 0.9;">
@@ -30,8 +45,7 @@
 	        <a class="btn btn-large btn-block btn-primary"  href="<%=rootPath %>/registerView"><i class="icon-user"></i>用户注册</a>	
 		</form>
 	</div>
-	<br /><br /><br /><br /><br />
-<%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%>
+<%-- <%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%> --%>
 <script type="text/javascript">
    function sub(){
 	   document.getElementById("loginSub").submit();

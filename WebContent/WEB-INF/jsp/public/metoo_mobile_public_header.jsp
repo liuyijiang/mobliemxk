@@ -14,17 +14,23 @@
 <div id="metooHeaderActionModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
      <div class="modal-body">
      <a href="<%=rootPath %>/partDashBoard" class="btn btn-large btn-block btn-primary"><i class="icon-pushpin"></i>单图分享</a>
-     <a class="btn btn-large btn-block btn-success" ><i class="icon-hdd"></i>专辑分享</a>
+     <a href="<%=rootPath %>/subjectDashBoard" class="btn btn-large btn-block btn-success" ><i class="icon-hdd"></i>专辑分享</a>
      <a class="btn btn-large btn-block btn-warning" ><i class="icon-weibo"></i>官方微博</a>
-     <a class="btn btn-large btn-block btn-info" onclick="showfiler()" ><i class="icon-th"></i>过滤类型</a>
-     <a class="btn btn-large btn-inverse btn-block" onclick="showfiler()" ><i class="icon-search"></i>搜索专辑</a>
+     <a href="javascript:;" class="btn btn-large btn-block btn-info" onclick="showFilterModal()" ><i class="icon-th"></i>过滤类型</a>
+     <a class="btn btn-large btn-inverse btn-block" onclick="showFilterModal()" ><i class="icon-search"></i>搜索专辑</a>
      </div>
 </div>
 
 <div id="metooFilterModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
-      <button class="btn btn-large btn-block " type="button">舰船模型</button>
-      <button class="btn btn-large btn-block " type="button">战机模型</button>
+         <a class="btn btn-large btn-block " type="button">舰船模型</a>
+         <a class="btn btn-large btn-block " type="button">装甲模型</a>
+         <a class="btn btn-large btn-block " type="button">战机模型</a>
+         <a class="btn btn-large btn-block " type="button">手办模型</a>
+         <a class="btn btn-large btn-block " type="button">动漫模型</a>
+         <a class="btn btn-large btn-block " type="button">高达模型</a>
+         <a class="btn btn-large btn-block " type="button">其他模型</a>
+         <a class="btn btn-large btn-block " type="button">所有模型</a>
       </div>
 </div>
 <script type="text/javascript">
@@ -38,4 +44,9 @@
 		      keyboard: false
 	  }); 
     }
+    
+    function filter(type){
+    	filterType = type;
+    }
+    
 </script>
