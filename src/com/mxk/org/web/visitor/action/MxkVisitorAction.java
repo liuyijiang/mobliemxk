@@ -394,14 +394,6 @@ public class MxkVisitorAction extends MxkSessionAction {
 			if(partShowResponse != null){
 				partShowResponse.setAllPage(partService.findUserSubjectPartsAllPage(subjectEntity.getId()));
 			}
-//			if(MxkConstant.SUBJECT_TYPE_FOR_ALL.equals(subjectEntity.getType())){
-//				if(partShowResponse != null){
-//					partShowResponse.setJoiner(subjectJoinPeopleService.findTop5SubjectJoiner(subjectEntity.getId()));	
-//				}
-//				return "FOR-ALL";
-//			}else{
-//				return "PUBLIC";
-//			}
 		}
 	   return SUCCESS;
     }
