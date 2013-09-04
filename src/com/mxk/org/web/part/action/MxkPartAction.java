@@ -125,22 +125,22 @@ public class MxkPartAction extends MxkSessionAction {
 //	}
 //	
 //	//删除
-//	public String mxkDeletePartAjax(){
-//		if(target != null){
-//			partEntity = partService.findPartEntityById(target);
-//			if(partEntity != null){
-//				partService.removePartById(partEntity.getId());
-//				gridFSFileUploadService.removeFile(partEntity.getImage(),MxkGridFSFileUploadService.FILE_TYPE_IMAGE);
-//				gridFSFileUploadService.removeFile(partEntity.getMinimage(), MxkGridFSFileUploadService.FILE_TYPE_IMAGE);
-//			}
-//			//头衔减分
-//			userTitleService.updatePoint(partEntity.getUserid(), MetooPointTypeConstant.METOO_POINT_TYPE_PART, false, false);
-//			message = MxkConstant.AJAX_SUCCESS;
-//		}else{
-//			message = MxkConstant.AJAX_ERROR;
-//		}
-//		return SUCCESS;
-//	}
+	public String mxkDeletePartAjax(){
+		if(target != null){
+			partEntity = partService.findPartEntityById(target);
+			if(partEntity != null){
+				partService.removePartById(partEntity.getId());
+				gridFSFileUploadService.removeFile(partEntity.getImage(),MxkGridFSFileUploadService.FILE_TYPE_IMAGE);
+				gridFSFileUploadService.removeFile(partEntity.getMinimage(), MxkGridFSFileUploadService.FILE_TYPE_IMAGE);
+			}
+			//头衔减分
+			userTitleService.updatePoint(partEntity.getUserid(), MetooPointTypeConstant.METOO_POINT_TYPE_PART, false, false);
+			message = MxkConstant.AJAX_SUCCESS;
+		}else{
+			message = MxkConstant.AJAX_ERROR;
+		}
+		return SUCCESS;
+	}
 //	
 //	
 //	public String mxkShowPartDetailView(){
@@ -171,6 +171,16 @@ public class MxkPartAction extends MxkSessionAction {
 //		}
 //		return SUCCESS;
 //	}
+	
+	//part deatial
+	public String mxkShowPartDetailView(){
+		uservo = super.getCurrentUserVO();
+		partEntity = partService.findPartEntityById(target);
+		if(partEntity != null){
+			partNewCommentsResponse = commentsService.findNewComments(partEntity.getId());
+		}
+	    return SUCCESS;
+    }
 	
 	//快速发布单个parts分享
 	public String mxkCreateSinglePartAjax(){

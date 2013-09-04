@@ -379,6 +379,69 @@ public class MxkVisitorAction extends MxkSessionAction {
 //	}
 //	
 //	
+	
+	//专题详细
+	public String metooVistiorShowSubjectDatailView(){
+		uservo = super.getCurrentUserVO();
+		subjectEntity =  subjectService.findSubjectEntityById(target);
+		if(subjectEntity != null){
+			targetUserVO = super.getCachedUserVO(subjectEntity.getUserid());
+			SearchPartRequest request = new SearchPartRequest();
+			request.setPage(1);
+			request.setSubjectid(subjectEntity.getId());
+			request.setType(null);
+			partShowResponse = partService.findUserSubjectParts(request);
+			if(partShowResponse != null){
+				partShowResponse.setAllPage(partService.findUserSubjectPartsAllPage(subjectEntity.getId()));
+			}
+//			if(MxkConstant.SUBJECT_TYPE_FOR_ALL.equals(subjectEntity.getType())){
+//				if(partShowResponse != null){
+//					partShowResponse.setJoiner(subjectJoinPeopleService.findTop5SubjectJoiner(subjectEntity.getId()));	
+//				}
+//				return "FOR-ALL";
+//			}else{
+//				return "PUBLIC";
+//			}
+		}
+	   return SUCCESS;
+    }
+	
+	//所有专辑
+	public String metooVisitorShowSubjectDashBoardView(){
+		uservo = super.getCurrentUserVO();
+		if(visitorSeeSubjectDashBoardRequest != null){
+			visitorSearchSubjectRespone = new VisitorSearchSubjectRespone();
+			visitorSearchSubjectRespone.setParm(visitorSeeSubjectDashBoardRequest.getParm());
+			allpage = subjectService.findSubjectEntityByNamePages(visitorSeeSubjectDashBoardRequest.getParm());
+		}else{
+			if(StringUtil.stringIsEmpty(type)){
+				allpage = subjectService.findSubjectEntityForALlPages(null,null);
+			}else{
+				allpage = subjectService.findSubjectEntityForALlPages(null,type);
+			}
+		}
+		return SUCCESS;
+	}
+	
+	//加载跟多subject
+	public String metooLoadMoreSubjectsByPageAjax(){
+		visitorSearchSubjectRespone = new VisitorSearchSubjectRespone();
+		List<SubjectEntity> list = null;
+		if(visitorSeeSubjectDashBoardRequest != null){
+			if(!StringUtil.stringIsEmpty(visitorSeeSubjectDashBoardRequest.getParm())){ //ģ���ԃ
+				list = subjectService.findSubjectEntityByName(visitorSeeSubjectDashBoardRequest.getParm(), visitorSeeSubjectDashBoardRequest.getPage());
+			}else{
+				if(StringUtil.stringIsEmpty(visitorSeeSubjectDashBoardRequest.getType())){
+					list = subjectService.findSubjectEntityForALl(visitorSeeSubjectDashBoardRequest.getTags(),null,visitorSeeSubjectDashBoardRequest.getPage());
+				}else{
+					list = subjectService.findSubjectEntityForALl(visitorSeeSubjectDashBoardRequest.getTags(),visitorSeeSubjectDashBoardRequest.getType(),visitorSeeSubjectDashBoardRequest.getPage());
+				}
+			}
+		}
+		visitorSearchSubjectRespone.setSubjectsShowResponse(subjectService.createSubjectsShowResponseByList(list));
+		return SUCCESS;
+	}
+	
 	//所有parts
 	public String metooVisitorShowPartDashBoardView(){
 		allpage = partService.findPartEnitiyPageByType(null);

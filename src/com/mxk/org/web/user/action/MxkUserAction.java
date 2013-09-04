@@ -393,7 +393,7 @@ public class MxkUserAction extends MxkSessionAction {
 	
 	public String metooLoadMoreUserShareParts(){
 		if(searchPartRequest != null){
-			partShowResponse = partService.findUserSubjectParts(searchPartRequest);
+			partShowResponse = partService.findUserShareParts(searchPartRequest);
 		}
 		return SUCCESS;
 	}

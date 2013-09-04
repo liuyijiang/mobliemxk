@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mxk.org.common.base.MxkSessionAction;
 import com.mxk.org.common.domain.constant.MetooGiftResultMessage;
+import com.mxk.org.common.domain.constant.MetooMultiformityCommentConstant;
 import com.mxk.org.common.domain.constant.MetooPointTypeConstant;
 import com.mxk.org.common.domain.constant.MetooResultMessage;
 import com.mxk.org.common.domain.constant.MxkConstant;
@@ -77,7 +78,7 @@ public class MxkCommentsAction extends MxkSessionAction {
 	
 	private CommentsAddRequest commentsAddRequest;
 	private LoadCommentsRequest loadCommentsRequest;
-	private LoadCommentsRespone loadCommentsRespone;
+	
 	private SendGiftRequest sendGiftRequest;
 	private GiftInfoResponse giftInfoResponse;
 	private LikeInfoResponse likeInfoResponse;
@@ -90,6 +91,27 @@ public class MxkCommentsAction extends MxkSessionAction {
 	private UserVO uservo;
 	private String message;
 	private String traget;
+	private int type;
+	
+	//手机使用
+	private LoadCommentsRespone loadCommentsRespone;
+	//
+	public String metooMultiformityCommentsView(){
+		uservo = super.getCurrentUserVO();
+		if(MetooMultiformityCommentConstant.COMMNETS == type){//评论
+			loadCommentsRequest = new LoadCommentsRequest();
+			loadCommentsRequest.setPage(1);
+			loadCommentsRequest.setTargeid(traget);
+			loadCommentsRequest.setType(null);
+			loadCommentsRespone = commentsService.findCommentEntityByPage(loadCommentsRequest);
+			if(loadCommentsRespone != null){
+				long allpage = commentsService.findCommentsPage(loadCommentsRequest);
+				loadCommentsRespone.setAllpage(allpage);
+		    }
+		}
+		return SUCCESS;
+	}
+	
 	
 	//定价
 	public String metooSetPriceToSubjectAjax(){
@@ -587,6 +609,14 @@ public class MxkCommentsAction extends MxkSessionAction {
 
 	public void setPriceResponse(PriceResponse priceResponse) {
 		this.priceResponse = priceResponse;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	} 
 	
 }
