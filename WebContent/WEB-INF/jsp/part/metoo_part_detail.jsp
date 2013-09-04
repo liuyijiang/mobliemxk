@@ -22,7 +22,7 @@
               <span class="label label-warning"><i class="icon-microphone"></i>语音评论${partEntity.audios}</span>
            </c:if>
        </span>
-        <img class="img-polaroid border-radius"  src="<%=imgurl %>${partEntity.image}">
+        <img style="border:1px solid #ccc;"  src="<%=imgurl %>${partEntity.image}">
   </div>
   <span class="span12">
      <span class="muted">

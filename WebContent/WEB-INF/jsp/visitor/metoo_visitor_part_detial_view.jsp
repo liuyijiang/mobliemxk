@@ -25,7 +25,7 @@
              <span class="label"><small>最高评分${partEntity.highPoint }</small></span>
            </c:if>
        </span>
-        <img class="img-polaroid border-radius"  src="<%=imgurl %>${partEntity.image}">
+        <img style="border:1px solid #ccc;" src="<%=imgurl %>${partEntity.image}">
   </div>
   <span class="span12">
      <span class="muted">
@@ -57,7 +57,7 @@
     <button class="pull-right btn btn-success btn-small">评论</button>
   </span>
 </div>
-<%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%>
+<%-- <%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%> --%>
 <%@ include file="../../../basefootinclude.jsp"%>  
 </body>
 </html>
