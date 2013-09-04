@@ -54,6 +54,12 @@
 <!--              <result name="success" >/WEB-INF/jsp/visitor/visitor_subject_dash_board.jsp</result> -->
 <!--         </action> -->
         
+        
+        <action name="vistiorShowSubjectDatail" class="com.mxk.org.web.visitor.action.MxkVisitorAction"
+            method="metooVistiorShowSubjectDatailView">
+            <result name="success" >/WEB-INF/jsp/visitor/metoo_mobile_visitor_subject_detail_view.jsp</result>
+        </action>
+        
          <action name="subjectDashBoard" class="com.mxk.org.web.visitor.action.MxkVisitorAction"
             method="metooVisitorShowSubjectDashBoardView">
             <result name="success" >/WEB-INF/jsp/visitor/metoo_mobile_visitor_subject_dash_board.jsp</result>
