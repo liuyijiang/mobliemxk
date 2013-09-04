@@ -19,6 +19,11 @@
             <result name="success" ></result>
         </action>
         
+         <action name="multiformityComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+            method="metooMultiformityCommentsView">
+            <result name="success" >/WEB-INF/jsp/comment/metoo_multiformity_comments.jsp</result>
+        </action>
+        
     </package>
 
     <package name="commentsajax"  namespace="/" extends="json-default">

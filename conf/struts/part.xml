@@ -16,7 +16,7 @@
         
        <action name="partDetail" class="com.mxk.org.web.part.action.MxkPartAction"
            method="mxkShowPartDetailView">
-           <result name="success" >/WEB-INF/jsp/part/part_detail.jsp</result>
+           <result name="success" >/WEB-INF/jsp/part/metoo_part_detail.jsp</result>
        </action>
        
        <action name="showPartDetailFromMessageRedrict" class="com.mxk.org.web.part.action.MxkPartAction"

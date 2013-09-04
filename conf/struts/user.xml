@@ -114,9 +114,9 @@
             <result name="error">/WEB-INF/jsp/user/metoo_user_login.jsp</result>
         </action>
         
-        <action name="LoadMoreUserShareParts" class="com.mxk.org.web.user.action.MxkUserAction"
+        <action name="loadMoreUserShareParts" class="com.mxk.org.web.user.action.MxkUserAction"
             method="metooLoadMoreUserShareParts">
-            <result name="success" >/WEB-INF/jsp/user/metoo_user_share_parts_load_more.jsp</result>
+            <result name="success" >/WEB-INF/jsp/user/ajaxload/metoo_user_share_parts_load_more.jsp</result>
         </action>
         
         
