@@ -80,10 +80,36 @@
     <textarea rows="3" style="width:98%"></textarea>
   </span>
   <span class="span12">
-    <button class="pull-right btn btn-success btn-small">评论</button>
+    <button onclick="addTextComents('${partEntity.id}','${partEntity.userid }','part')" class="pull-right btn btn-success btn-small">评论</button>
   </span>
 </div>
 <%-- <%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%> --%>
 <%@ include file="../../../basefootinclude.jsp"%>  
+<script type="text/javascript">
+var replyuserid = '';
+function addTextComents(commentedId,commentedUserId,traget){
+	  var info = $("#commentstextarea").val();
+	  var datas = {"commentsAddRequest.replyUserId":replyuserid,"commentsAddRequest.commentedUserId":commentedUserId,"commentsAddRequest.commentedId":commentedId,"commentsAddRequest.info":info,"commentsAddRequest.target":traget,"commentsAddRequest.type":"text"};
+	  $.ajax({
+	   		url : path + "/addTextComments.action",
+	   		type : "POST",
+	   		cache : false,
+	   		async : false,
+	   		data: datas,
+	   		dataType : "json",
+	   		success : function(item) {
+	   		    if(item == 'success'){
+	 			   alert("评论成功！");
+	 			   window.location.href= path + "/visitorShowPartsDetailView?target==" + commentedId;
+			    }else if( item == 'error'){
+			   	   alert("网络异常请重试");
+			    }else {
+			     	alert(item);
+			    }
+	   		  }
+	 }); 
+}
+
+</script>
 </body>
 </html>
