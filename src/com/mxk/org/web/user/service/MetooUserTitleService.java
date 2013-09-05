@@ -31,32 +31,7 @@ public class MetooUserTitleService {
 		CertificateRespone certificateRespone = null;
 		if(list != null && !list.isEmpty()){
 			certificateRespone = new CertificateRespone();
-			int index = 0;
-			List<UserCertificateEntity> list1 = new ArrayList<UserCertificateEntity>();
-			List<UserCertificateEntity> list2 = new ArrayList<UserCertificateEntity>();
-			List<UserCertificateEntity> list3 = new ArrayList<UserCertificateEntity>();
-			List<UserCertificateEntity> list4 = new ArrayList<UserCertificateEntity>();
-			certificateRespone.setList1(list1);
-			certificateRespone.setList2(list2);
-			certificateRespone.setList3(list3);
-			certificateRespone.setList4(list4);
-			for (UserCertificateEntity cer : list) {
-				if(index == 0){
-					list1.add(cer);
-					index ++ ;
-				}
-				else if(index == 1){
-					list2.add(cer);
-					index ++ ;
-				}
-				else if(index == 2){
-					list3.add(cer);
-					index ++;
-				}else if(index == 3){
-					list4.add(cer);
-					index = 0;
-				}
-			}
+			certificateRespone.setList1(list);
 		}
 		return certificateRespone;
 	}

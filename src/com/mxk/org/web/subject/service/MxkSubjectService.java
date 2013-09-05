@@ -207,33 +207,7 @@ public class MxkSubjectService {
 		SubjectsShowResponse subjectsShowResponse = null;
 		if(list != null && !list.isEmpty()){
 			subjectsShowResponse = new SubjectsShowResponse();
-			int index = 0;
-			List<SubjectEntity> list1 = new ArrayList<SubjectEntity>();
-			List<SubjectEntity> list2 = new ArrayList<SubjectEntity>();
-			List<SubjectEntity> list3 = new ArrayList<SubjectEntity>();
-			List<SubjectEntity> list4 = new ArrayList<SubjectEntity>();
-			subjectsShowResponse.setList1(list1);
-			subjectsShowResponse.setList2(list2);
-			subjectsShowResponse.setList3(list3);
-			subjectsShowResponse.setList4(list4);
-			for (SubjectEntity sub : list) {
-				if(index == 0){
-					list1.add(sub);
-					index ++ ;
-				}
-				else if(index == 1){
-					list2.add(sub);
-					index ++ ;
-				}
-				else if(index == 2){
-					list3.add(sub);
-					index ++ ;
-				}
-				else if(index == 3){
-					list4.add(sub);
-					index = 0;
-				}
-			}
+			subjectsShowResponse.setList1(list);
 		}
 		return subjectsShowResponse;
 	}

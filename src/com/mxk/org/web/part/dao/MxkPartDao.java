@@ -103,6 +103,25 @@ public class MxkPartDao {
 		return mog.find(q, CollectInformationEntity.class);
 	}
 	
+	public List<CollectInformationEntity> findCollectInformationEntityByPage(String targetId,int page){
+		Query q = new Query(Criteria.where("tragetId").is(targetId));
+		q.sort().on("createTime", Order.DESCENDING);
+		q.limit(pageSize);
+		q.skip(pageSize*(page - 1));
+		return mog.find(q, CollectInformationEntity.class);
+	}
+	
+	public long findCollectInformationEntityAllPage(String targetId){
+		Query q = new Query(Criteria.where("tragetId").is(targetId));
+	    long count =  mog.count(q, CollectInformationEntity.class);
+		if(count != 0){
+			return (count + pageSize - 1) / pageSize;
+		}else{
+			return 0;
+		}
+	}
+	
+	
 	public void saveCollectInformationEntity(CollectInformationEntity en){
 		mog.save(en);
 	}

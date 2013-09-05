@@ -5,6 +5,7 @@ public class BaseRequest {
 	private String trageUserId;
 	private String tragetid;
 	private String trageType;
+	private int page;
 	
 	public String getTragetid() {
 		return tragetid;
@@ -23,6 +24,12 @@ public class BaseRequest {
 	}
 	public void setTrageUserId(String trageUserId) {
 		this.trageUserId = trageUserId;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 }

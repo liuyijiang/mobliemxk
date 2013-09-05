@@ -380,7 +380,25 @@ public class MxkUserAction extends MxkSessionAction {
 //		return SUCCESS;
 //	}
 //
+	//用户专题
+	public String metooUserSubjectView(){
+		uservo = super.getCurrentUserVO();
+		if(uservo != null){
+			allpage = subjectService.findUserSubjectAllPage(uservo.getId());
+			return SUCCESS;
+		}else{
+			return ERROR;	
+		}
+	}
 	
+	public String metooLoadMoreUserSubjectAjax(){
+		if (searchSubjectRequest != null) {
+		  subjectsShowResponse = subjectService.findSubjectEntityBySearchRequest(searchSubjectRequest);
+		}
+		return SUCCESS;
+	}
+	
+	//用户分享
 	public String metooUserSharePartsView(){
 		uservo = super.getCurrentUserVO();
 		if(uservo != null){
@@ -619,23 +637,18 @@ public class MxkUserAction extends MxkSessionAction {
 //	
 //	
 //	//用户收藏
-//	public String mxkUserCollectIndexView() {
-//		uservo = super.getCurrentUserVO();
-//		if(uservo != null){
-//			UserCollectSearchRequest userCollectSearchRequest = new UserCollectSearchRequest();
-//			userCollectSearchRequest.setPage(1);
-//			userCollectSearchRequest.setUserid(uservo.getId());
-//			List<String> ids = userService.findUserCollectPartsIds(userCollectSearchRequest);
-//		    if(ids != null){
-//		    	partShowResponse = partService.findUserCollectParts(ids);
-//		    	long allpage = userService.findUserCollectPartsPages(userCollectSearchRequest);
-//		    	partShowResponse.setAllPage(allpage);
-//		    }
-//		    return SUCCESS;
-//		}else{
-//			return ERROR;
-//		}
-//	}
+	public String metooUserCollectIndexView() {
+		uservo = super.getCurrentUserVO();
+		if(uservo != null){
+			UserCollectSearchRequest userCollectSearchRequest = new UserCollectSearchRequest();
+			userCollectSearchRequest.setPage(1);
+			userCollectSearchRequest.setUserid(uservo.getId());
+		    allpage = userService.findUserCollectPartsPages(userCollectSearchRequest);
+		    return SUCCESS;
+		}else{
+			return ERROR;
+		}
+	}
 //	
 //	//过滤收藏 by type
 //	public String mxkFilterUserCollectAjax(){
@@ -650,19 +663,19 @@ public class MxkUserAction extends MxkSessionAction {
 //		return SUCCESS;
 //	}
 //	
-//	//���ظ���û��ղ���Ϣ
-//	public String mxkLoadMoreUserCollectAjax(){
-//		if(userCollectSearchRequest != null){
-//			if(StringUtil.stringIsEmpty(userCollectSearchRequest.getType())){
-//				userCollectSearchRequest.setType(null);
-//			}
-//			List<String> ids = userService.findUserCollectPartsIds(userCollectSearchRequest);
-//			if(ids != null){
-//		    	partShowResponse = partService.findUserCollectParts(ids);
-//		    }
-//		}
-//	    return SUCCESS;
-//	}
+//	//加载更多收藏
+	public String metooLoadMoreUserCollectAjax(){
+		if(userCollectSearchRequest != null){
+			if(StringUtil.stringIsEmpty(userCollectSearchRequest.getType())){
+				userCollectSearchRequest.setType(null);
+			}
+			List<String> ids = userService.findUserCollectPartsIds(userCollectSearchRequest);
+			if(ids != null){
+		    	partShowResponse = partService.findUserCollectParts(ids);
+		    }
+		}
+	    return SUCCESS;
+	}
 //	
 //	//���ĵ�ר��
 //	public String mxkShowUserRssSubjectView(){
@@ -755,14 +768,14 @@ public class MxkUserAction extends MxkSessionAction {
 ////		
 ////	}
 //	
-//	//查看证书
-//	public String metooShowUserCertificateView(){ 
-//		uservo = super.getCurrentUserVO();
-//		if(uservo != null){
-//			certificateRespone = userTitleService.findUserAllCertificate(uservo.getId());
-//		}
-//		return SUCCESS;
-//	}
+	//查看证书
+	public String metooShowUserCertificateView(){ 
+		uservo = super.getCurrentUserVO();
+		if(uservo != null){
+			certificateRespone = userTitleService.findUserAllCertificate(uservo.getId());
+		}
+		return SUCCESS;
+	}
 //	
 //	//升级
 //	public String metooUpgradeUserTileAjax() {

@@ -2,6 +2,7 @@ package com.mxk.org.web.comments.action;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,13 @@ import com.mxk.org.common.base.MxkSessionAction;
 import com.mxk.org.common.domain.constant.MetooGiftResultMessage;
 import com.mxk.org.common.domain.constant.MetooMultiformityCommentConstant;
 import com.mxk.org.common.domain.constant.MetooPointTypeConstant;
-import com.mxk.org.common.domain.constant.MetooResultMessage;
 import com.mxk.org.common.domain.constant.MxkConstant;
 import com.mxk.org.common.domain.constant.MxkSubjectcCategory;
 import com.mxk.org.common.message.serivce.MxkMessageQueueService;
 import com.mxk.org.common.service.MxkGridFSFileUploadService;
 import com.mxk.org.common.util.HttpUtil;
 import com.mxk.org.common.util.StringUtil;
+import com.mxk.org.entity.CollectInformationEntity;
 import com.mxk.org.entity.CommentEntity;
 import com.mxk.org.entity.GiftEntity;
 import com.mxk.org.entity.MessageEntity;
@@ -92,10 +93,12 @@ public class MxkCommentsAction extends MxkSessionAction {
 	private String message;
 	private String traget;
 	private int type;
-	
+	private List<CollectInformationEntity> collectlist;
 	//手机使用
 	private LoadCommentsRespone loadCommentsRespone;
-	//
+	private long allpage;
+	
+	//手机调转到多样评论页面
 	public String metooMultiformityCommentsView(){
 		uservo = super.getCurrentUserVO();
 		if(MetooMultiformityCommentConstant.COMMNETS == type){//评论
@@ -108,6 +111,44 @@ public class MxkCommentsAction extends MxkSessionAction {
 				long allpage = commentsService.findCommentsPage(loadCommentsRequest);
 				loadCommentsRespone.setAllpage(allpage);
 		    }
+			return "COMMENTS";
+		}else if(MetooMultiformityCommentConstant.COLLECT == type){ //收藏
+			collectlist = partService.findCollectInformationEntityByPage(traget,1);
+			allpage = partService.findCollectInformationEntityAllPage(traget);
+			return "COLLECT";
+		}else if(MetooMultiformityCommentConstant.LIKE == type){ //喜欢
+			pageModel = new PageModelRequest();
+			likeInfoResponse = new LikeInfoResponse();
+			pageModel.setCurrentPage(1);
+			pageModel.setTragetId(traget);
+			likeInfoResponse.setAllpage(commentsService.findCountOfUserLikeEntity(pageModel.getTragetId()));
+		    likeInfoResponse.setList(commentsService.findUserLikeEntityByPage(pageModel.getTragetId(), pageModel.getCurrentPage()));
+		    return "LIKE";
+		}
+		return ERROR;
+	}
+	
+	//手机加载更多喜欢
+	public String metooLoadMoreLikeAjax(){
+		if(pageModel != null){
+			likeInfoResponse = new LikeInfoResponse();
+			likeInfoResponse.setList(commentsService.findUserLikeEntityByPage(pageModel.getTragetId(), pageModel.getCurrentPage()));
+		}
+		return SUCCESS;
+	}
+	
+	//手机加载更多收藏
+	public String metooLoadMoreCollectAjax(){
+		if(baseRequest != null){
+			collectlist = partService.findCollectInformationEntityByPage(baseRequest.getTragetid(),baseRequest.getPage());
+		}
+		return SUCCESS;
+	}
+	
+	//手机加载更多评论
+	public String metooLoadMoreCommentsAjax(){
+		if(loadCommentsRequest != null){
+			loadCommentsRespone = commentsService.findCommentEntityByPage(loadCommentsRequest);
 		}
 		return SUCCESS;
 	}
@@ -617,6 +658,22 @@ public class MxkCommentsAction extends MxkSessionAction {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public List<CollectInformationEntity> getCollectlist() {
+		return collectlist;
+	}
+
+	public void setCollectlist(List<CollectInformationEntity> collectlist) {
+		this.collectlist = collectlist;
+	}
+
+	public long getAllpage() {
+		return allpage;
+	}
+
+	public void setAllpage(long allpage) {
+		this.allpage = allpage;
 	} 
 	
 }

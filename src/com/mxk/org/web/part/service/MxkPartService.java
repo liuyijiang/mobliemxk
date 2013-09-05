@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Order;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import com.mxk.org.common.domain.constant.MxkConstant;
@@ -23,6 +26,14 @@ public class MxkPartService {
 
 	@Autowired
 	private MxkPartDao partDao;
+	
+	public List<CollectInformationEntity> findCollectInformationEntityByPage(String targetId,int page){
+		return partDao.findCollectInformationEntityByPage(targetId, page);
+	}
+	
+	public long findCollectInformationEntityAllPage(String targetId){
+		return partDao.findCollectInformationEntityAllPage(targetId);
+	}
 	
 	public List<PartEntity> findUserPartsMadom(String userid,int num){
 		return partDao.findUserPartsMadom(userid,num);
