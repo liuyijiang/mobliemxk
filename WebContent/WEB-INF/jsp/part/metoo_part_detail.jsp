@@ -58,7 +58,7 @@
      <c:forEach var="options" items="${partNewCommentsResponse.list }">
          <span class="span12">
 		    <span>
-		       <img style="width:20px" class="img-polaroid border-radius" src="<%=imgurl %>${options.userimage }" />
+		       <img style="width:26px;border:1px solid #ccc;" src="<%=imgurl %>${options.userimage }" />
 		       <span><strong>${options.username }</strong></span>
 		       <c:if test="${options.type == 'text' }">
 	               <span class='muted'>${options.info}</span><br />

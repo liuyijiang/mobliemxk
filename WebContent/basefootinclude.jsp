@@ -6,7 +6,7 @@
 <script type="text/javascript" src="<%=fassets %>/js/bootstrap-transition.js" ></script>
 <script type="text/javascript" src="<%=fassets %>/js/bootstrap-dropdown.js" ></script>
 <script type="text/javascript" src="<%=fassets %>/js/bootstrap-alert.js" ></script>
-<script type="text/javascript" src="<%=fassets %>/js/bootstrap-tooltip.js"></script>
-<script type="text/javascript" src="<%=fassets %>/js/bootstrap-popover.js"></script>
+<%-- <script type="text/javascript" src="<%=fassets %>/js/bootstrap-tooltip.js"></script> --%>
+<%-- <script type="text/javascript" src="<%=fassets %>/js/bootstrap-popover.js"></script> --%>
 <script type="text/javascript" src="<%=fassets %>/js/ajaxfileupload.js"></script>
 

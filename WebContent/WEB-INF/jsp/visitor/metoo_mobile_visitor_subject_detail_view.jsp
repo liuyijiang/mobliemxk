@@ -12,7 +12,10 @@
     <span>
        <img style="width:19px" class="img-polaroid border-radius" src="<%=imgurl %>${targetUserVO.minimage }" />
        <span><strong><a href="">${targetUserVO.name }</a></strong></span>
-        <span class="pull-right"><button class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>加关注</button></span>
+        <span class="pull-right">
+           <a class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注模友</a>
+           <a class="btn btn-primary btn-mini"><i class="icon-rss"></i>订阅专辑</a>
+        </span>
     </span>
   </span>
 <span class="span12">

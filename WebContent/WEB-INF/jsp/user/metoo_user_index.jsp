@@ -32,9 +32,9 @@
      <div style="height:24px"></div>
      <span class="span12">
      <a class="btn btn-large btn-block" href="<%=rootPath %>/userSharePartsView"><i class="icon-rss-sign"></i>我的分享</a>
-     <a class="btn btn-large btn-block" ><i class="icon-hdd"></i>我的专辑</a>
-     <a class="btn btn-large btn-block" ><i class="icon-pushpin"></i>我的收藏</a>
-     <a class="btn btn-large btn-block" ><i class="icon-bookmark"></i>我的证书</a>
+     <a class="btn btn-large btn-block" href="<%=rootPath %>/userSubjectView"><i class="icon-hdd"></i>我的专辑</a>
+     <a class="btn btn-large btn-block" href="<%=rootPath %>/userCollectIndex"><i class="icon-pushpin"></i>我的收藏</a>
+     <a class="btn btn-large btn-block" href="<%=rootPath %>/showUserCertificate" ><i class="icon-bookmark"></i>我的证书</a>
    </span>
 </div>
 
@@ -139,7 +139,7 @@ function chooseTags(tag){
 		return false;
 	}
 	</script>
-<%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%>
+<%-- <%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%> --%>
 <%@ include file="../../../basefootinclude.jsp"%>  
 </body>
 </html>
