@@ -19,10 +19,10 @@
 <!--             <result name="success" >/WEB-INF/jsp/user/user_gift.jsp</result> -->
 <!--          </action> -->
         
-<!--          <action name="showUserCertificate" class="com.mxk.org.web.user.action.MxkUserAction" -->
-<!--             method="metooShowUserCertificateView"> -->
-<!--             <result name="success" >/WEB-INF/jsp/user/user_certificate_view.jsp</result> -->
-<!--          </action> -->
+         <action name="showUserCertificate" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooShowUserCertificateView">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_certificate_view.jsp</result>
+         </action>
         
 <!--          <action name="userSharePartsIndex" class="com.mxk.org.web.user.action.MxkUserAction" -->
 <!--             method="mxkUserShareSinglePartsIndexView"> -->
@@ -90,6 +90,17 @@
 <!--             <result name="success" type="redirect">userIndex</result> -->
 <!--             <result name="error">/WEB-INF/jsp/user/user_login.jsp</result> -->
 <!--         </action> -->
+        
+         <action name="userSubjectView" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooUserSubjectView">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_subject_view.jsp</result>
+        </action>
+        
+        <action name="loadMoreUserSubject" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooLoadMoreUserSubjectAjax">
+            <result name="success" >/WEB-INF/jsp/user/ajaxload/metoo_user_subject_load_more.jsp</result>
+        </action>
+        
         
         <action name="userSharePartsView" class="com.mxk.org.web.user.action.MxkUserAction"
             method="metooUserSharePartsView">
@@ -162,11 +173,15 @@
 <!--             <result name="error">/WEB-INF/jsp/user/user_login.jsp</result> -->
 <!--         </action> -->
         
-<!--         <action name="userCollectIndex" class="com.mxk.org.web.user.action.MxkUserAction" -->
-<!--             method="mxkUserCollectIndexView"> -->
-<!--             <result name="success" >/WEB-INF/jsp/user/user_collect_parts_index.jsp</result> -->
-<!--             <result name="error">/WEB-INF/jsp/user/user_login.jsp</result> -->
-<!--         </action> -->
+        <action name="userCollectIndex" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooUserCollectIndexView">
+            <result name="success" >/WEB-INF/jsp/user/metoo_user_collect_parts_view.jsp</result>
+        </action>
+        
+         <action name="loadMoreUserCollect" class="com.mxk.org.web.user.action.MxkUserAction"
+            method="metooLoadMoreUserCollectAjax">
+            <result name="success" >/WEB-INF/jsp/user/ajaxload/metoo_user_collect_parts_load_more.jsp</result>
+        </action>
         
 <!--         <action name="userFoucsView" class="com.mxk.org.web.user.action.MxkUserAction" -->
 <!--             method="mxkShowUserFoucsView"> -->

@@ -21,12 +21,39 @@
         
          <action name="multiformityComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
             method="metooMultiformityCommentsView">
-            <result name="success" >/WEB-INF/jsp/comment/metoo_multiformity_comments.jsp</result>
+            <result name="COMMENTS" >/WEB-INF/jsp/comment/metoo_multiformity_comments.jsp</result>
+            <result name="COLLECT" >/WEB-INF/jsp/comment/metoo_multiformity_collect.jsp</result>
+            <result name="LIKE" >/WEB-INF/jsp/comment/metoo_multiformity_like.jsp</result>
+        
         </action>
         
     </package>
 
     <package name="commentsajax"  namespace="/" extends="json-default">
+    
+        <!-- 手机 -->
+        <action name="loadMoreComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooLoadMoreCommentsAjax">
+			<result type="json">
+				<param name="root">loadCommentsRespone</param>
+			</result>
+		</action>
+    
+       <action name="loadMoreCollect" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooLoadMoreCollectAjax">
+			<result type="json">
+				<param name="root">collectlist</param>
+			</result>
+		</action>
+    
+       <action name="loadMoreLike" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooLoadMoreLikeAjax">
+			<result type="json">
+				<param name="root">likeInfoResponse</param>
+			</result>
+		</action>
+    
+       <!-- end手机 -->
     
 		<action name="addTextComments" class="com.mxk.org.web.comments.action.MxkCommentsAction"
             method="mxkAddTextCommentsAjax">
