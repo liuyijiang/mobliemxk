@@ -93,6 +93,7 @@ public class MxkCommentsAction extends MxkSessionAction {
 	private String message;
 	private String traget;
 	private int type;
+	private String targetType;
 	private List<CollectInformationEntity> collectlist;
 	//手机使用
 	private LoadCommentsRespone loadCommentsRespone;
@@ -124,6 +125,14 @@ public class MxkCommentsAction extends MxkSessionAction {
 			likeInfoResponse.setAllpage(commentsService.findCountOfUserLikeEntity(pageModel.getTragetId()));
 		    likeInfoResponse.setList(commentsService.findUserLikeEntityByPage(pageModel.getTragetId(), pageModel.getCurrentPage()));
 		    return "LIKE";
+		}else if(MetooMultiformityCommentConstant.POINT == type){ //评分
+			pageModel = new PageModelRequest();
+			pointInfoResponse = new PointInfoResponse();
+			pageModel.setCurrentPage(1);
+			pageModel.setTragetId(traget);
+			pointInfoResponse.setAllpage(commentsService.findCountOfUserSetPoint(pageModel.getTragetId()));
+			pointInfoResponse.setList(commentsService.findUserPointEntity(pageModel.getTragetId(), pageModel.getCurrentPage()));
+			return "POINT";
 		}
 		return ERROR;
 	}
@@ -153,6 +162,14 @@ public class MxkCommentsAction extends MxkSessionAction {
 		return SUCCESS;
 	}
 	
+	//手机加载更多评分
+	public String metooLoadMorePointAjax(){
+		if(pageModel != null){
+			pointInfoResponse = new PointInfoResponse();
+			pointInfoResponse.setList(commentsService.findUserPointEntity(pageModel.getTragetId(), pageModel.getCurrentPage()));
+		}
+		return SUCCESS;
+	}
 	
 	//定价
 	public String metooSetPriceToSubjectAjax(){
@@ -320,6 +337,7 @@ public class MxkCommentsAction extends MxkSessionAction {
 		return SUCCESS;	
 	}
 	
+	//手机评分
 	public String metooSetPointAjax () {
 		uservo = super.getCurrentUserVO();
 		message = MxkConstant.USER_NO_LOGIN;
@@ -674,6 +692,14 @@ public class MxkCommentsAction extends MxkSessionAction {
 
 	public void setAllpage(long allpage) {
 		this.allpage = allpage;
+	}
+
+	public String getTargetType() {
+		return targetType;
+	}
+
+	public void setTargetType(String targetType) {
+		this.targetType = targetType;
 	} 
 	
 }

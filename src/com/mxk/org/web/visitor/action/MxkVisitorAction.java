@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.mxk.org.common.base.MxkSessionAction;
+import com.mxk.org.common.domain.constant.MetooModelTypeConstant;
 import com.mxk.org.common.domain.constant.MxkConstant;
 import com.mxk.org.common.util.ImageUtil;
 import com.mxk.org.common.util.PointUtil;
@@ -104,7 +105,7 @@ public class MxkVisitorAction extends MxkSessionAction {
 	private PartEntity partEntity;
 	private PartNewCommentsResponse partNewCommentsResponse;
 	private UserVO targetUserVO;
-	
+	private String trags;
 //	//游客查看part额外信息 
 //	public String metooVisitorSeePartsExtraInfoView(){
 //		uservo = super.getCurrentUserVO();
@@ -405,12 +406,14 @@ public class MxkVisitorAction extends MxkSessionAction {
 			visitorSearchSubjectRespone = new VisitorSearchSubjectRespone();
 			visitorSearchSubjectRespone.setParm(visitorSeeSubjectDashBoardRequest.getParm());
 			allpage = subjectService.findSubjectEntityByNamePages(visitorSeeSubjectDashBoardRequest.getParm());
+			trags = visitorSeeSubjectDashBoardRequest.getParm();
 		}else{
 			if(StringUtil.stringIsEmpty(type)){
 				allpage = subjectService.findSubjectEntityForALlPages(null,null);
 			}else{
 				allpage = subjectService.findSubjectEntityForALlPages(null,type);
 			}
+			trags = null;
 		}
 		return SUCCESS;
 	}
@@ -436,13 +439,42 @@ public class MxkVisitorAction extends MxkSessionAction {
 	
 	//所有parts
 	public String metooVisitorShowPartDashBoardView(){
+		uservo = super.getCurrentUserVO();
 		allpage = partService.findPartEnitiyPageByType(null);
+		return SUCCESS;
+	}
+	
+	//所有parts with type
+	public String metooVisitorShowPartDashBoardWithTypeView(){
+		uservo = super.getCurrentUserVO(); 
+		String nametype = null;
+		System.out.println(MetooModelTypeConstant.METOO_MODEL_TYPE_TKMX);
+		if(MetooModelTypeConstant.METOO_MODEL_TYPE_DMMX.toString().equals(type)){
+			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_DMMX.getString();
+		}else if(MetooModelTypeConstant.METOO_MODEL_TYPE_GDMX.toString().equals(type)){
+			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_GDMX.getString();
+		}else if(MetooModelTypeConstant.METOO_MODEL_TYPE_JCMX.toString().equals(type)){
+			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_JCMX.getString();
+		}else if(MetooModelTypeConstant.METOO_MODEL_TYPE_QTMX.toString().equals(type)){
+			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_QTMX.getString();
+		}else if(MetooModelTypeConstant.METOO_MODEL_TYPE_SBMX.toString().equals(type)){
+			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_SBMX.getString();
+		}else if(MetooModelTypeConstant.METOO_MODEL_TYPE_TKMX.toString().equals(type)){
+			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_TKMX.getString();
+		}else if(MetooModelTypeConstant.METOO_MODEL_TYPE_ZJMX.toString().equals(type)){
+			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_ZJMX.getString();
+		}
+		allpage = partService.findPartEnitiyPageByType(nametype);
+		type = nametype;
 		return SUCCESS;
 	}
 	
 	//加载更多
 	public String metooLoadMorePartsByPageAjax(){
 		if(searchPartRequest != null){
+			if(StringUtil.stringIsEmpty(searchPartRequest.getType())){
+				searchPartRequest.setType(null);
+			}
 			partShowResponse = partService.findUserSubjectParts(searchPartRequest);
 		}
 		return SUCCESS;
@@ -450,6 +482,7 @@ public class MxkVisitorAction extends MxkSessionAction {
 	
 	//查看细节
 	public String metooVisitorShowPartsDetailView(){
+		uservo = super.getCurrentUserVO(); 
 		partEntity = partService.findPartEntityById(target);
 		if(partEntity != null){
 			targetUserVO = super.getCachedUserVO(partEntity.getUserid());
@@ -800,6 +833,14 @@ public class MxkVisitorAction extends MxkSessionAction {
 
 	public void setAllpage(long allpage) {
 		this.allpage = allpage;
+	}
+
+	public String getTrags() {
+		return trags;
+	}
+
+	public void setTrags(String trags) {
+		this.trags = trags;
 	}
 
 	
