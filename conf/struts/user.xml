@@ -197,12 +197,12 @@
 
     <package name="userajax"  namespace="/" extends="json-default">
     
-<!--        <action name="createUserCollect" class="com.mxk.org.web.user.action.MxkUserAction" -->
-<!-- 			method="mxkCreateUserCollectAjax"> -->
-<!-- 		    <result type="json" name="success">   -->
-<!--                  <param name="root">message</param> -->
-<!--             </result>   -->
-<!-- 		</action> -->
+       <action name="createUserCollect" class="com.mxk.org.web.user.action.MxkUserAction"
+			method="mxkCreateUserCollectAjax">
+		    <result type="json" name="success">  
+                 <param name="root">message</param>
+            </result>  
+		</action>
 		
 <!-- 		<action name="removeUserCollect" class="com.mxk.org.web.user.action.MxkUserAction" -->
 <!-- 			method="mxkRemoveUserCollectAjax"> -->
