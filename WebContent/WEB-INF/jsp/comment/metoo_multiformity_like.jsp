@@ -13,7 +13,7 @@
        <img style="width:32px;border:1px solid #ccc;" src="<%=imgurl%>${uservo.minimage}" />
        <strong>${uservo.name }</strong>
     </span>
-    <a class="pull-right btn btn-info btn-small"><i class="icon-heart"></i>喜欢</a>
+    <a onclick="setlike('${traget}','${targetType}');" href="javascript:;" class="pull-right btn btn-info btn-small"><i class="icon-heart"></i>喜欢</a>
   </span>
 </div>
 <div style="width:100%;height:4px;"></div>
@@ -78,6 +78,29 @@ function creatediv(list){
 	$("#collect_div").append(show);
 }
 
+</script>
+<script type="text/javascript">
+function setlike(tragetid,trageType){
+	var datas = {"baseRequest.tragetid":tragetid,"setPointRequest.trageType":trageType};
+	$.ajax({
+   		url : path + "/setLike.action",
+   		type : "POST",
+   		cache : false,
+   		async : false,
+   		data: datas,
+   		dataType : "json",
+   		success : function(item) {
+   			if(item == 'success'){
+	 			   alert("评论成功！");
+	 			   window.location.href= path + "/multiformityComments?type=2&traget=" + tragetid;
+			    }else if( item == 'error'){
+			   	   alert("网络异常请重试");
+			    }else {
+			     	alert(item);
+			    }
+   		 }
+   });
+}
 </script>
 <%@ include file="../../../basefootinclude.jsp"%> 
 </body>

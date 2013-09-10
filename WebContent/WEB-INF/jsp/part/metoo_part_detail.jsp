@@ -22,7 +22,7 @@
               <span class="label label-warning"><i class="icon-microphone"></i>语音评论${partEntity.audios}</span>
            </c:if>
        </span>
-        <img style="border:1px solid #ccc;"  src="<%=imgurl %>${partEntity.image}">
+        <img style="border:1px solid #ccc;"  src="<%=imgurl %>${partEntity.minimage}">
   </div>
   <span class="span12">
      <span class="muted">
@@ -75,6 +75,7 @@
      <br />
   </c:if>
   <c:if test="${partEntity.audios + partEntity.comments == 0 }">
+    <br />
     <div class="container" style="text-align:center;">
        <span class="muted">暂无评论</span>
     </div>

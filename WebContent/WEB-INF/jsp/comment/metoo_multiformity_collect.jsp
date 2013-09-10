@@ -13,7 +13,7 @@
        <img style="width:32px;border:1px solid #ccc;" src="<%=imgurl%>${uservo.minimage}" />
        <strong>${uservo.name }</strong>
     </span>
-    <a class="pull-right btn btn-danger btn-small"><i class="icon-pushpin"></i>收藏Part</a>
+    <a onclick="collectPart('${traget}')" href="javascript:;" class="pull-right btn btn-danger btn-small"><i class="icon-pushpin"></i>收藏Part</a>
   </span>
 </div>
 <div style="width:100%;height:4px;"></div>
@@ -76,6 +76,28 @@ function creatediv(list){
 	    +"收藏了这个Part<i class='icon-pushpin'></i></small></span><br /></div><div style='height:4px;'></div>";
 	}
 	$("#collect_div").append(show);
+}
+
+</script>
+<script type="text/javascript">
+function collectPart(partid){
+	  $.ajax({
+ 		url : path + "/createUserCollect.action",
+ 		type : "POST",
+ 		cache : false,
+ 		async : false,
+ 		data: {"collectPartsRequest.targetId":partid},
+ 		dataType : "json",
+ 		success : function(item) {
+ 		    if(item == 'success'){
+			   alert("已将Part加入到你的收藏夹");
+		    }else if( item == 'error'){
+		   	   alert("网络异常请重试");
+		    }else {
+		     	alert(item);
+		    }
+ 		  }
+	 }); 
 }
 
 </script>
