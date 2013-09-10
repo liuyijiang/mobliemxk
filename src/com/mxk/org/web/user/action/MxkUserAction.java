@@ -1,8 +1,5 @@
 package com.mxk.org.web.user.action;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -10,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.mxk.org.common.base.MxkSessionAction;
-import com.mxk.org.common.domain.constant.MetooCertificateConstant;
-import com.mxk.org.common.domain.constant.MetooResultMessage;
 import com.mxk.org.common.domain.constant.MetooTitleConstant;
 import com.mxk.org.common.domain.constant.MxkConstant;
 import com.mxk.org.common.factory.VOFactory;
@@ -307,28 +302,29 @@ public class MxkUserAction extends MxkSessionAction {
 //		return SUCCESS;
 //	}
 //	
-//	public String mxkCreateUserCollectAjax(){
-//		uservo = super.getCurrentUserVO();
-//		message = MxkConstant.AJAX_ERROR;
-//		if(uservo != null && collectPartsRequest != null){
-//			collectPartsRequest.setUserid(uservo.getId());
-//			if(userService.createUserCollect(collectPartsRequest)){
-//				CollectInformationEntity en = new CollectInformationEntity();
-//				en.setCreateTime(StringUtil.dateToString(new Date(), null));
-//				en.setCollecterId(uservo.getId());
-//				en.setCollecterImg(uservo.getImage());
-//				en.setCollecterName(uservo.getName());
-//				en.setPin(PointUtil.randomPIN());
-//				en.setTragetId(collectPartsRequest.getTargetId());
-//				partService.saveCollectInformationEntity(en);
-//				partService.changePartsBackShadow(collectPartsRequest.getTargetId());
-//			}
-//			message = MxkConstant.AJAX_SUCCESS;
-//		}else{
-//			message = MxkConstant.USER_NO_LOGIN;
-//		}
-//		return SUCCESS;
-//	}
+	//手机收藏
+	public String mxkCreateUserCollectAjax(){
+		uservo = super.getCurrentUserVO();
+		message = MxkConstant.AJAX_ERROR;
+		if(uservo != null && collectPartsRequest != null){
+			collectPartsRequest.setUserid(uservo.getId());
+			if(userService.createUserCollect(collectPartsRequest)){
+				CollectInformationEntity en = new CollectInformationEntity();
+				en.setCreateTime(StringUtil.dateToString(new Date(), null));
+				en.setCollecterId(uservo.getId());
+				en.setCollecterImg(uservo.getImage());
+				en.setCollecterName(uservo.getName());
+				en.setPin(PointUtil.randomPIN());
+				en.setTragetId(collectPartsRequest.getTargetId());
+				partService.saveCollectInformationEntity(en);
+				partService.changePartsBackShadow(collectPartsRequest.getTargetId());
+			}
+			message = MxkConstant.AJAX_SUCCESS;
+		}else{
+			message = MxkConstant.USER_NO_LOGIN;
+		}
+		return SUCCESS;
+	}
 //	
 //	public String mxkRemoveUserCollectAjax(){
 //		uservo = super.getCurrentUserVO();
