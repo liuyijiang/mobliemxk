@@ -55,6 +55,12 @@
 <!--         </action> -->
         
         
+        
+          <action name="partDashBoardType" class="com.mxk.org.web.visitor.action.MxkVisitorAction"
+            method="metooVisitorShowPartDashBoardWithTypeView">
+            <result name="success" >/WEB-INF/jsp/visitor/metoo_mobile_visitor_part_dash_board.jsp</result>
+        </action>
+        
         <action name="vistiorShowSubjectDatail" class="com.mxk.org.web.visitor.action.MxkVisitorAction"
             method="metooVistiorShowSubjectDatailView">
             <result name="success" >/WEB-INF/jsp/visitor/metoo_mobile_visitor_subject_detail_view.jsp</result>
