@@ -14,7 +14,14 @@
     </div>
 </div>
 <div class="container">
-  <span class="pull-left" id="partTitle"><strong>所有模型</strong></span>
+  <span class="pull-left" id="partTitle">
+  <c:if test="${type !=null }">
+    <strong>${type}</strong>
+  </c:if>
+  <c:if test="${type == null }">
+     <strong>所有模型</strong>
+  </c:if>
+  </span>
   <span class="pull-right text-success" id="partTitle"><strong>总页数${allpage }|当前<span id="currentpage">1</span></strong></span>
 </div>
 <div id="partsdivshow" class="container">
@@ -23,6 +30,7 @@
 <%@ include file="../../../basefootinclude.jsp"%>  
  <script type="text/javascript">
    var allpage = '${allpage-1}';
+   var type = '${type}';
    var page = 0;  
    function loadMore(isNext){
 	   $("#loaddiv").show();
@@ -35,7 +43,7 @@
    			page = 1;
    		   }
        }
-	   var datas = {"searchPartRequest.page":page};
+	   var datas = {"searchPartRequest.page":page,"searchPartRequest.type":type};
 	   $("#partsdivshow").load(path +'/loadMorePartsByPage',datas,function() {
 	    	$("#loaddiv").hide();
 	    	$("#currentpage").html(page);

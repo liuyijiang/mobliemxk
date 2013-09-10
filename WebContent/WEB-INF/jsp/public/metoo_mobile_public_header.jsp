@@ -17,23 +17,42 @@
      <a href="<%=rootPath %>/subjectDashBoard" class="btn btn-large btn-block btn-success" ><i class="icon-hdd"></i>专辑分享</a>
      <a class="btn btn-large btn-block btn-warning" ><i class="icon-weibo"></i>官方微博</a>
      <a href="javascript:;" class="btn btn-large btn-block btn-info" onclick="showFilterModal()" ><i class="icon-th"></i>过滤类型</a>
-     <a class="btn btn-large btn-inverse btn-block" onclick="showFilterModal()" ><i class="icon-search"></i>搜索专辑</a>
+     <a href="javascript:;" class="btn btn-large btn-inverse btn-block" onclick="showSearchModal()" ><i class="icon-search"></i>搜索专辑</a>
      </div>
 </div>
 
 <div id="metooFilterModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-body">
-         <a class="btn btn-large btn-block " type="button">舰船模型</a>
-         <a class="btn btn-large btn-block " type="button">装甲模型</a>
-         <a class="btn btn-large btn-block " type="button">战机模型</a>
-         <a class="btn btn-large btn-block " type="button">手办模型</a>
-         <a class="btn btn-large btn-block " type="button">动漫模型</a>
-         <a class="btn btn-large btn-block " type="button">高达模型</a>
-         <a class="btn btn-large btn-block " type="button">其他模型</a>
-         <a class="btn btn-large btn-block " type="button">所有模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_JCMX" class="btn btn-large btn-block " type="button">舰船模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_TKMX" class="btn btn-large btn-block " type="button">装甲模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_ZJMX" class="btn btn-large btn-block " type="button">战机模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_SBMX" class="btn btn-large btn-block " type="button">手办模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_DMMX" class="btn btn-large btn-block " type="button">动漫模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_GDMX" class="btn btn-large btn-block " type="button">高达模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_QTMX" class="btn btn-large btn-block " type="button">其他模型</a>
+         <a href="<%=rootPath %>/partDashBoardType?type=METOO_MODEL_TYPE_SYMX" class="btn btn-large btn-block " type="button">所有模型</a>
+      </div>
+</div>
+
+
+<div id="metooSearchModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-body">
+        <form id="top_form" action="<%=rootPath %>/subjectDashBoard" method="POST">
+          <input class="span4" placeholder="搜专辑..." type="text" id="topsearchparm" name="visitorSeeSubjectDashBoardRequest.parm" >
+        </form>
+        <a href="javascript:;" onclick="to_search()" class="btn">查询专题</a>
       </div>
 </div>
 <script type="text/javascript">
+function to_search(){
+	 var top_parm = $("#topsearchparm").val();
+	 if(top_parm == ""){
+		 alert("请输入查询条件！");
+	 }else{
+		 $("#top_form").submit();
+	 } 
+ }
+
    function showHeaderActionModal(){
 		 $('#metooHeaderActionModal').modal({
 	      keyboard: false
@@ -43,7 +62,15 @@
 	   $('#metooFilterModal').modal({
 		      keyboard: false
 	  }); 
+	   $('#metooHeaderActionModal').modal('hide'); 
     }
+    
+    function showSearchModal(){
+ 	   $('#metooSearchModal').modal({
+ 		      keyboard: false
+ 	  }); 
+ 	  $('#metooHeaderActionModal').modal('hide'); 
+     }
     
     function filter(type){
     	filterType = type;

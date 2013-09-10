@@ -19,10 +19,13 @@
 </div>
 <div id="partsdivshow" class="container">
 </div>
+<c:if test="${allpage > 1 }">
 <%@ include file="../public/metoo_mobile_public_footer.jsp"%>
+</c:if>
 <%@ include file="../../../basefootinclude.jsp"%>  
  <script type="text/javascript">
    var allpage = '${allpage-1}';
+   var trags = '${trags}';
    var page = 0;  
    function loadMore(isNext){
 	   $("#loaddiv").show();
@@ -35,7 +38,7 @@
    			page = 1;
    		   }
        }
-	   var datas = {"visitorSeeSubjectDashBoardRequest.page":page};
+	   var datas = {"visitorSeeSubjectDashBoardRequest.page":page, "visitorSeeSubjectDashBoardRequest.parm":trags};
 	   $("#partsdivshow").load(path +'/loadMoreSubjectByPage',datas,function() {
 	    	$("#loaddiv").hide();
 	    	$("#currentpage").html(page);

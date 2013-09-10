@@ -10,14 +10,14 @@
 <div class="container">
   <span class="span12">
     <span class="muted"><small><strong>评论一下</strong></small></span><br />
-    <textarea rows="2" style="width:98%;"></textarea>
+    <textarea id="commentstextarea" rows="2" style="width:98%;"></textarea>
   </span>
   <span class="span12">
     <span class="pull-left">
        <img style="width:32px;border:1px solid #ccc;" src="<%=imgurl%>${uservo.minimage}" />
        <strong>${uservo.name }</strong>
     </span>
-    <a class="pull-right btn btn-success btn-small">评论</a>
+    <a href="" onclick="addTextComents('${traget}','${uservo.id }','${targetType }')" class="pull-right btn btn-success btn-small">评论</a>
   </span>
   <br /><br />
   <div id="comments_div">
@@ -90,5 +90,31 @@ function creatediv(list){
 
 </script>
 <%@ include file="../../../basefootinclude.jsp"%> 
+<script type="text/javascript">
+var replyuserid = '';
+function addTextComents(commentedId,commentedUserId,traget){
+	  var info = $("#commentstextarea").val();
+	  var datas = {"commentsAddRequest.replyUserId":replyuserid,"commentsAddRequest.commentedUserId":commentedUserId,"commentsAddRequest.commentedId":commentedId,"commentsAddRequest.info":info,"commentsAddRequest.target":traget,"commentsAddRequest.type":"text"};
+	  $.ajax({
+	   		url : path + "/addTextComments.action",
+	   		type : "POST",
+	   		cache : false,
+	   		async : false,
+	   		data: datas,
+	   		dataType : "json",
+	   		success : function(item) {
+	   		    if(item == 'success'){
+	 			   alert("评论成功！");
+	 			   window.location.href= path + "/multiformityComments?type=1&traget=" + commentedId;
+			    }else if( item == 'error'){
+			   	   alert("网络异常请重试");
+			    }else {
+			     	alert(item);
+			    }
+	   		  }
+	 }); 
+}
+
+</script>
 </body>
 </html>

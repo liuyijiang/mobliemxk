@@ -13,9 +13,9 @@
        <img style="width:26px;border:1px solid #ccc;" src="<%=imgurl %>${targetUserVO.minimage }" />
        <span><strong>${targetUserVO.name }</strong></span>
         <span class="pull-right">
-         <a class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注模友</a>
+         <a class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注</a>
          <a class="btn btn-mini btn-danger" href="javascript:;" onclick="collectPart('${partEntity.id}')">
-		 <i class="icon-pushpin"></i>收藏Part
+		 <i class="icon-pushpin"></i>收藏
          </a>
         </span>
     </span>
@@ -46,10 +46,10 @@
     </span>
     <span class="pull-right">
          <div class="btn-group pull-right">
-		  <a href="<%=rootPath %>/multiformityComments?type=1&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${partEntity.audios + partEntity.comments  }</a>
-		  <a href="<%=rootPath %>/multiformityComments?type=2&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${partEntity.likes  }</a>
-		  <a href="<%=rootPath %>/multiformityComments?type=3&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>收藏${partEntity.collect }</a>
-		  <a href="<%=rootPath %>/multiformityComments?type=4&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-trophy"></i>评分${partEntity.highPointTime }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=1&targetType=part&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${partEntity.audios + partEntity.comments  }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=2&targetType=part&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${partEntity.likes  }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=3&targetType=part&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>收藏${partEntity.collect }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=4&targetType=part&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-trophy"></i>评分${partEntity.highPointTime }</a>
 		</div>
     </span>
   </span>
@@ -77,7 +77,7 @@
   </c:if>
   <span class="span12">
     <span class="muted"><small><strong>评论一下</strong></small></span><br />
-    <textarea rows="3" style="width:98%"></textarea>
+    <textarea id="commentstextarea" rows="3" style="width:98%"></textarea>
   </span>
   <span class="span12">
     <button onclick="addTextComents('${partEntity.id}','${partEntity.userid }','part')" class="pull-right btn btn-success btn-small">评论</button>
@@ -100,7 +100,7 @@ function addTextComents(commentedId,commentedUserId,traget){
 	   		success : function(item) {
 	   		    if(item == 'success'){
 	 			   alert("评论成功！");
-	 			   window.location.href= path + "/visitorShowPartsDetailView?target==" + commentedId;
+	 			   window.location.href= path + "/visitorShowPartsDetailView?target=" + commentedId;
 			    }else if( item == 'error'){
 			   	   alert("网络异常请重试");
 			    }else {
