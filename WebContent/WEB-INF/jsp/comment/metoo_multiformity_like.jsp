@@ -27,7 +27,7 @@
 		       <img style="width:26px;border:1px solid #ccc;" src="<%=imgurl%>${options.userimage}" />
 		       <strong><a style="color:#000000;" href="">${options.username }</a></strong>&nbsp;
 		    </span>
-            <span class='muted pull-right'><small>喜欢这个Part<i class="icon-heart"></i></small></span><br />
+            <span class='muted pull-right'><small>喜欢+1<i class="icon-heart"></i></small></span><br />
         </div>
        <div style="height:4px;"></div>
 <!--        <div style="height:1px;witdh:100%;background-color:#CCCCCC"></div> -->
@@ -73,7 +73,7 @@ function creatediv(list){
 	for (var i in list) {
 		show = show + "<div class='span12'><span><img style='width:26px;border:1px solid #ccc;' src='"+ imgurl+ list[i].userimage +"' />"
 		+"<strong><a style='color:#000000;' href=''>"+ list[i].username +"</a></strong>&nbsp;</span><span class='muted pull-right'><small>"
-	    +"喜欢这个Part<i class='icon-heart'></i></small></span><br /></div><div style='height:4px;'></div>";
+	    +"喜欢+1<i class='icon-heart'></i></small></span><br /></div><div style='height:4px;'></div>";
 	}
 	$("#collect_div").append(show);
 }
@@ -81,7 +81,8 @@ function creatediv(list){
 </script>
 <script type="text/javascript">
 function setlike(tragetid,trageType){
-	var datas = {"baseRequest.tragetid":tragetid,"setPointRequest.trageType":trageType};
+	alert(trageType);
+	var datas = {"baseRequest.tragetid":tragetid,"baseRequest.trageType":trageType};
 	$.ajax({
    		url : path + "/setLike.action",
    		type : "POST",
@@ -91,8 +92,7 @@ function setlike(tragetid,trageType){
    		dataType : "json",
    		success : function(item) {
    			if(item == 'success'){
-	 			   alert("评论成功！");
-	 			   window.location.href= path + "/multiformityComments?type=2&traget=" + tragetid;
+	 			   alert("操作成功！");
 			    }else if( item == 'error'){
 			   	   alert("网络异常请重试");
 			    }else {

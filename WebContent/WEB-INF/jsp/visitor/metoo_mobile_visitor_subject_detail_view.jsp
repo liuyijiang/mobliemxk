@@ -13,8 +13,8 @@
        <img style="width:19px" class="img-polaroid border-radius" src="<%=imgurl %>${targetUserVO.minimage }" />
        <span><strong><a href="">${targetUserVO.name }</a></strong></span>
         <span class="pull-right">
-           <a class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注模友</a>
-           <a class="btn btn-primary btn-mini"><i class="icon-rss"></i>订阅专辑</a>
+           <a class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注</a>
+           <a class="btn btn-primary btn-mini"><i class="icon-rss"></i>订阅</a>
         </span>
     </span>
   </span>
@@ -25,10 +25,10 @@
  <div class="span12" style="height:2px"></div>
   <span class="span12">
         <div class="btn-group">
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${subjectEntity.comments }</a>
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${subjectEntity.likes  }</a>
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>定价${subjectEntity.moneytimes }</a>
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>评分${subjectEntity.pointtimes }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=1&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${subjectEntity.comments }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=2&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${subjectEntity.likes  }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=5&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>定价${subjectEntity.moneytimes }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=4&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>评分${subjectEntity.pointtimes }</a>
 		</div>
   </span>
  <div style="height:7px"></div>
