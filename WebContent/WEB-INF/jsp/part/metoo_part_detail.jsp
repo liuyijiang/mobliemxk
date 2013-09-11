@@ -11,7 +11,12 @@
   <c:if test="${partEntity.subjectid != '#' }">
    <span class="span12"><small>来自专题：<a href="">${partEntity.subname }</a></small></span><br />
   </c:if>
-  <span class="label">${partEntity.type }</span><br />
+  <span class="span12">
+    <span class="pull-left label">${partEntity.type }</span>
+     <a class="pull-right btn btn-mini btn-danger" href="javascript:;" onclick="deletePart('${partEntity.id}')">
+		 <i class="icon-remove-sign"></i>删除
+       </a>
+  </span><br />
   <div class="span12" style="height:2px"></div>
   <div style="position:relative;" >
        <span style="position:absolute; z-index:1; opacity: 0.8;">
@@ -37,22 +42,13 @@
   </span>
     <div class="span12" style="height:2px"></div>
   <span class="span12">
-    <span class="pull-left">
-       <a class="btn btn-mini btn-danger" href="javascript:;" onclick="deletePart('${partEntity.id}')">
-		 <i class="icon-remove-sign"></i>删除
-       </a>
-    </span>
-    <span class="pull-right">
-        <div class="btn-group pull-right">
+        <div class="btn-group">
 		  <a href="<%=rootPath %>/multiformityComments?type=1&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${partEntity.audios + partEntity.comments  }</a>
 		  <a href="<%=rootPath %>/multiformityComments?type=2&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${partEntity.likes  }</a>
 		  <a href="<%=rootPath %>/multiformityComments?type=3&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>收藏${partEntity.collect }</a>
 		  <a href="<%=rootPath %>/multiformityComments?type=4&traget=${partEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-trophy"></i>评分${partEntity.highPointTime }</a>
 		</div>
-    </span>
   </span>
-  <div class="span12" style="height:3px"></div>
-  <br />
   <div class="span12" style="height:6px"></div>
   <c:if test="${partEntity.audios + partEntity.comments != 0 }">
      <c:forEach var="options" items="${partNewCommentsResponse.list }">

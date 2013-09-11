@@ -15,7 +15,7 @@
      <div class="modal-body">
      <a href="<%=rootPath %>/partDashBoard" class="btn btn-large btn-block btn-primary"><i class="icon-pushpin"></i>单图分享</a>
      <a href="<%=rootPath %>/subjectDashBoard" class="btn btn-large btn-block btn-success" ><i class="icon-hdd"></i>专辑分享</a>
-     <a class="btn btn-large btn-block btn-warning" ><i class="icon-weibo"></i>官方微博</a>
+<!--      <a class="btn btn-large btn-block btn-warning" ><i class="icon-weibo"></i>官方微博</a> -->
      <a href="javascript:;" class="btn btn-large btn-block btn-info" onclick="showFilterModal()" ><i class="icon-th"></i>过滤类型</a>
      <a href="javascript:;" class="btn btn-large btn-inverse btn-block" onclick="showSearchModal()" ><i class="icon-search"></i>搜索专辑</a>
      </div>

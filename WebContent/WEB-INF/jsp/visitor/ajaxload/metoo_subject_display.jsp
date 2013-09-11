@@ -28,8 +28,8 @@
 				<span class="muted"><small><strong>${options.name }</strong><span class="muted">(${options.category })</span></small></span><br />
 				<span class="muted"><small>${options.info }</small></span><br />
 				<span>
-				  <img class="img-polaroid" src="<%=imgurl %>${options.userimage}" style="width:15px">
-				  <a href="<%=rootPath%>/vistiorShowUserIndex?target=${options.userid}">${options.username }</a>
+				  <img style="width:26px;border:1px solid #ccc;" src="<%=imgurl %>${options.userimage}" >
+				  <a href="javascript:;">${options.username }</a>
 				</span><br />
 				    <span class="label">${options.category }</span>
 				    <span class="pull-right muted">

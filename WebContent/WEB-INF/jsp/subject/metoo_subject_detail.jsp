@@ -27,10 +27,10 @@
  <div class="span12" style="height:2px"></div>
   <span class="span12">
         <div class="btn-group">
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${currentSubjectEntity.comments }</a>
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${currentSubjectEntity.likes  }</a>
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-jpy"></i>定价${currentSubjectEntity.moneytimes }</a>
-		  <a href="#" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-trophy"></i>评分${currentSubjectEntity.pointtimes }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=1&targetType=subject&traget=${currentSubjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${currentSubjectEntity.comments }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=2&targetType=subject&traget=${currentSubjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${currentSubjectEntity.likes  }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=5&targetType=subject&traget=${currentSubjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-jpy"></i>定价${currentSubjectEntity.moneytimes }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=4&targetType=subject&traget=${currentSubjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-trophy"></i>评分${currentSubjectEntity.pointtimes }</a>
 		</div>
   </span>
  <div style="height:7px"></div>

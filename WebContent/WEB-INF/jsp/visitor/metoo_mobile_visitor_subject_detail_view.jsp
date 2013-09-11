@@ -10,11 +10,11 @@
 <div class="container">
 <span class="span12">
     <span>
-       <img style="width:19px" class="img-polaroid border-radius" src="<%=imgurl %>${targetUserVO.minimage }" />
+       <img style="width:26px;border:1px solid #ccc;" src="<%=imgurl %>${targetUserVO.minimage }" />
        <span><strong><a href="">${targetUserVO.name }</a></strong></span>
         <span class="pull-right">
-           <a class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注</a>
-           <a class="btn btn-primary btn-mini"><i class="icon-rss"></i>订阅</a>
+           <a onclick="createUserRelation('${targetUserVO.id}')" href="javascript:;" class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注</a>
+           <a onclick="rsssubject('${subjectEntity.id}','${subjectEntity.userid }')" href="javascript:;" class="btn btn-primary btn-mini"><i class="icon-rss"></i>订阅</a>
         </span>
     </span>
   </span>
@@ -27,8 +27,8 @@
         <div class="btn-group">
 		  <a href="<%=rootPath %>/multiformityComments?type=1&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-comment"></i>评论${subjectEntity.comments }</a>
 		  <a href="<%=rootPath %>/multiformityComments?type=2&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-heart"></i>喜欢${subjectEntity.likes  }</a>
-		  <a href="<%=rootPath %>/multiformityComments?type=5&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>定价${subjectEntity.moneytimes }</a>
-		  <a href="<%=rootPath %>/multiformityComments?type=4&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-pushpin"></i>评分${subjectEntity.pointtimes }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=5&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-jpy"></i>定价${subjectEntity.moneytimes }</a>
+		  <a href="<%=rootPath %>/multiformityComments?type=4&targetType=subject&traget=${subjectEntity.id}" class="btn btn-mini" style="font-family:Microsoft YaHei;"><i class="icon-trophy"></i>评分${subjectEntity.pointtimes }</a>
 		</div>
   </span>
  <div style="height:7px"></div>
@@ -53,7 +53,45 @@
      <span><small>${subjectEntity.createTime }</small></span>
    </c:if>
    </span>
+    <div style="height:3px"></div>
 </div>
+<div class="container">
+<span class="span12">
+    <span class="muted"><small><strong>评论一下</strong></small></span><br />
+    <textarea id="commentstextarea" rows="3" style="width:98%"></textarea>
+  </span>
+<span class="span12">
+    <button onclick="addTextComents('${subjectEntity.id}','${subjectEntity.userid }','subject')" class="pull-right btn btn-success btn-small">评论</button>
+  </span>  
+  
+</div>
+  <br />
+<script type="text/javascript">
+var replyuserid = '';
+function addTextComents(commentedId,commentedUserId,traget){
+	  var info = $("#commentstextarea").val();
+	  var datas = {"commentsAddRequest.replyUserId":replyuserid,"commentsAddRequest.commentedUserId":commentedUserId,"commentsAddRequest.commentedId":commentedId,"commentsAddRequest.info":info,"commentsAddRequest.target":traget,"commentsAddRequest.type":"text"};
+	  $.ajax({
+	   		url : path + "/addTextComments",
+	   		type : "POST",
+	   		cache : false,
+	   		async : false,
+	   		data: datas,
+	   		dataType : "json",
+	   		success : function(item) {
+	   		    if(item == 'success'){
+	 			   alert("评论成功！");
+	 			   //window.location.href= path + "/visitorShowPartsDetailView?target=" + commentedId;
+			    }else if( item == 'error'){
+			   	   alert("网络异常请重试");
+			    }else {
+			     	alert(item);
+			    }
+	   		  }
+	 }); 
+}
+
+</script>
 <%@ include file="../../../basefootinclude.jsp"%> 
 </body>
 </html>

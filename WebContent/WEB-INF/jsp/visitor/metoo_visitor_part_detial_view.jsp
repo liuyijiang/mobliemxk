@@ -13,7 +13,7 @@
        <img style="width:26px;border:1px solid #ccc;" src="<%=imgurl %>${targetUserVO.minimage }" />
        <span><strong>${targetUserVO.name }</strong></span>
         <span class="pull-right">
-         <a class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注</a>
+         <a onclick="createUserRelation('${targetUserVO.id}')" href="javascript:;" class="btn btn-inverse btn-mini"><i class="icon-plus-sign"></i>关注</a>
          <a class="btn btn-mini btn-danger" href="javascript:;" onclick="collectPart('${partEntity.id}')">
 		 <i class="icon-pushpin"></i>收藏
          </a>
