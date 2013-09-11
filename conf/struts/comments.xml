@@ -25,6 +25,7 @@
             <result name="COLLECT" >/WEB-INF/jsp/comment/metoo_multiformity_collect.jsp</result>
             <result name="LIKE" >/WEB-INF/jsp/comment/metoo_multiformity_like.jsp</result>
             <result name="POINT" >/WEB-INF/jsp/comment/metoo_multiformity_point.jsp</result>
+            <result name="MONEY" >/WEB-INF/jsp/comment/metoo_multiformity_money.jsp</result>
         </action>
         
     </package>
@@ -57,6 +58,13 @@
 			method="metooLoadMorePointAjax">
 			<result type="json">
 				<param name="root">pointInfoResponse</param>
+			</result>
+		</action>
+    
+       <action name="loadMoreMoney" class="com.mxk.org.web.comments.action.MxkCommentsAction"
+			method="metooLoadMoreMoneyAjax">
+			<result type="json">
+				<param name="root">priceResponse</param>
 			</result>
 		</action>
     
