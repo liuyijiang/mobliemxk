@@ -334,24 +334,24 @@ public class MxkSubjectAction extends MxkSessionAction {
 //		return SUCCESS;
 //	}
 	
-	//����ר��
-//	public String mxkRssSubjectAjax(){
-//		message = MxkConstant.AJAX_ERROR;	
-//		uservo = super.getCurrentUserVO();
-//		if(uservo != null && rssSubjectRequest != null){
-//			rssSubjectRequest.setUserdesc(uservo.getInfo());
-//			rssSubjectRequest.setUserid(uservo.getId());
-//			rssSubjectRequest.setUserimage(uservo.getImage());
-//			rssSubjectRequest.setUsername(uservo.getName());
-//			if(subjectService.createUserRssSubject(rssSubjectRequest)){
-//				redisCacheService.cachUserRssSubject(uservo.getId(), rssSubjectRequest.getSubjectid());
-//			}
-//			message = MxkConstant.AJAX_SUCCESS;
-//		}else{
-//			message = MxkConstant.USER_NO_LOGIN;
-//		}
-//		return SUCCESS;
-//	}
+	//手机订阅专辑
+	public String mxkRssSubjectAjax(){
+		message = MxkConstant.AJAX_ERROR;	
+		uservo = super.getCurrentUserVO();
+		if(uservo != null && rssSubjectRequest != null){
+			rssSubjectRequest.setUserdesc(uservo.getInfo());
+			rssSubjectRequest.setUserid(uservo.getId());
+			rssSubjectRequest.setUserimage(uservo.getImage());
+			rssSubjectRequest.setUsername(uservo.getName());
+			if(subjectService.createUserRssSubject(rssSubjectRequest)){
+				redisCacheService.cachUserRssSubject(uservo.getId(), rssSubjectRequest.getSubjectid());
+			}
+			message = MxkConstant.AJAX_SUCCESS;
+		}else{
+			message = MxkConstant.USER_NO_LOGIN;
+		}
+		return SUCCESS;
+	}
 	
 	
 	

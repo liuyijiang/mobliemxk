@@ -281,26 +281,27 @@ public class MxkUserAction extends MxkSessionAction {
 //		return SUCCESS;
 //	}
 //	
-//	public String mxkCreateUserRelationAjax(){
-//		uservo = super.getCurrentUserVO();
-//		message = MxkConstant.AJAX_ERROR;
-//		if(uservo != null && createRelationShipRequest != null){
-//			if(!uservo.getId().equals(createRelationShipRequest.getUserid())){//����ʹ�Լ�
-//				if(!userFriendService.checkUserRelationShip(uservo.getId(), createRelationShipRequest.getUserid())){
-//					UserFriendEntity user = new UserFriendEntity();
-//					user.setUserid(createRelationShipRequest.getUserid());
-//					user.setFriendid(uservo.getId());
-//					if(userFriendService.createUserRelation(user)){
-//						redisCacheService.cachUserRelation(uservo.getId(), createRelationShipRequest.getUserid());
-//						message = MxkConstant.AJAX_SUCCESS;
-//					}
-//				}
-//			}
-//		}else{
-//			message = MxkConstant.USER_NO_LOGIN;
-//		}
-//		return SUCCESS;
-//	}
+	//手机关注用户
+	public String mxkCreateUserRelationAjax(){
+		uservo = super.getCurrentUserVO();
+		message = MxkConstant.AJAX_ERROR;
+		if(uservo != null && createRelationShipRequest != null){
+			if(!uservo.getId().equals(createRelationShipRequest.getUserid())){//����ʹ�Լ�
+				if(!userFriendService.checkUserRelationShip(uservo.getId(), createRelationShipRequest.getUserid())){
+					UserFriendEntity user = new UserFriendEntity();
+					user.setUserid(createRelationShipRequest.getUserid());
+					user.setFriendid(uservo.getId());
+					if(userFriendService.createUserRelation(user)){
+						redisCacheService.cachUserRelation(uservo.getId(), createRelationShipRequest.getUserid());
+						message = MxkConstant.AJAX_SUCCESS;
+					}
+				}
+			}
+		}else{
+			message = MxkConstant.USER_NO_LOGIN;
+		}
+		return SUCCESS;
+	}
 //	
 	//手机收藏
 	public String mxkCreateUserCollectAjax(){

@@ -6,5 +6,5 @@ public class MetooMultiformityCommentConstant {
 	public static int LIKE = 2;
 	public static int COLLECT = 3;
 	public static int POINT = 4;
-	
+	public static int MONEY = 5;
 }

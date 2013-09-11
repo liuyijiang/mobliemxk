@@ -448,7 +448,6 @@ public class MxkVisitorAction extends MxkSessionAction {
 	public String metooVisitorShowPartDashBoardWithTypeView(){
 		uservo = super.getCurrentUserVO(); 
 		String nametype = null;
-		System.out.println(MetooModelTypeConstant.METOO_MODEL_TYPE_TKMX);
 		if(MetooModelTypeConstant.METOO_MODEL_TYPE_DMMX.toString().equals(type)){
 			nametype = MetooModelTypeConstant.METOO_MODEL_TYPE_DMMX.getString();
 		}else if(MetooModelTypeConstant.METOO_MODEL_TYPE_GDMX.toString().equals(type)){

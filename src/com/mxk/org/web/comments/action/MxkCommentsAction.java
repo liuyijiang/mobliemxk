@@ -133,8 +133,25 @@ public class MxkCommentsAction extends MxkSessionAction {
 			pointInfoResponse.setAllpage(commentsService.findCountOfUserSetPoint(pageModel.getTragetId()));
 			pointInfoResponse.setList(commentsService.findUserPointEntity(pageModel.getTragetId(), pageModel.getCurrentPage()));
 			return "POINT";
+		}else if(MetooMultiformityCommentConstant.MONEY == type){
+			pageModel = new PageModelRequest();
+			pageModel.setCurrentPage(1);
+			pageModel.setTragetId(traget);
+			priceResponse = new PriceResponse();
+			priceResponse.setAllpage(commentsService.findCountOfSubjectPriceEntity(pageModel.getTragetId()));
+			priceResponse.setList(commentsService.findSubjectPriceEntity(pageModel.getTragetId(), pageModel.getCurrentPage()));
+			return "MONEY";
 		}
 		return ERROR;
+	}
+	
+	//手机加载定价
+	public String metooLoadMoreMoneyAjax(){
+		if(pageModel != null){
+			priceResponse = new PriceResponse();
+			priceResponse.setList(commentsService.findSubjectPriceEntity(pageModel.getTragetId(), pageModel.getCurrentPage()));
+		}
+		return SUCCESS;	
 	}
 	
 	//手机加载更多喜欢
