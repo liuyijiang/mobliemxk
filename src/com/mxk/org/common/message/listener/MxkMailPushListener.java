@@ -61,6 +61,10 @@ public class MxkMailPushListener implements MessageListener {
 		
 	}
 	
+	private void pushMailToMe(String name){
+		mailService.sendSimpleMail("liuyijiang3430@qq.com",name,"新用户注册");
+	}
+	
 	private void pushUserRegistSuccessMail(UserVO vo){
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("image",vo.getImage());
