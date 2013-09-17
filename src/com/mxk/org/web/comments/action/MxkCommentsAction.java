@@ -368,6 +368,7 @@ public class MxkCommentsAction extends MxkSessionAction {
 				entity.setUserid(uservo.getId());
 				entity.setUserimage(uservo.getImage());
 				entity.setUsername(uservo.getName());
+				message = MxkConstant.AJAX_SUCCESS;
 				if(commentsService.saveUserSetPonit(entity)){
 					//增加积分
 					if(MxkConstant.SUBJECT.equals(setPointRequest.getTrageType())){
@@ -380,7 +381,6 @@ public class MxkCommentsAction extends MxkSessionAction {
 					}
 					userTitleService.updatePoint(uservo.getId(), MetooPointTypeConstant.METOO_POINT_TYPE_COMMENT, true, false);
 				}
-				message = MxkConstant.AJAX_SUCCESS;
 			// }
 		}
 		return SUCCESS;
