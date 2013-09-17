@@ -50,6 +50,7 @@ public class MxkMailPushListener implements MessageListener {
 			  UserVO vo = redisCacheService.getUserVO(target);
 			  if(vo != null){
 				  pushUserRegistSuccessMail(vo); 
+				  pushMailToMe(vo.getName());
 			  }
 		  }else if(MxkConstant.MAIL_TYPE_WEEKPUSH.equals(type)){
 			  pushAllUserPartsCollectHigh();

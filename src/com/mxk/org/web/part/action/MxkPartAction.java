@@ -216,48 +216,48 @@ public class MxkPartAction extends MxkSessionAction {
 	
 	
 	//创建part
-//	public String mxkCreatePartAjax(){
-//		uservo = super.getCurrentUserVO();
-//		currentSubjectEntity =  super.getSessionData(MxkSessionContext.MXK_SUBJECT_CASH, SubjectEntity.class);
-//		if(uservo != null && currentSubjectEntity != null && valate()){
-//			createPartRequest.setSubname(currentSubjectEntity.getName());
-//			createPartRequest.setUserid(uservo.getId());
-//			createPartRequest.setUserimage(uservo.getImage());
-//			createPartRequest.setUsername(uservo.getName());
-//			createPartRequest.setStatus(currentSubjectEntity.getType());
-//			String partid = partService.savePart(createPartRequest);
-//			if(partid != null && image != null){
-//				String imageurl = gridFSFileUploadService.uploadImage(image, partid,MxkFileUploadService.IMAGE_TYPE_PNG, MxkFileUploadService.IMAGE_SIZE_FULL, max);
-//				String minimageurl = gridFSFileUploadService.uploadImage(image, partid,MxkFileUploadService.IMAGE_TYPE_PNG, MxkFileUploadService.IMAGE_SIZE_MINI,min);
-//			    if(imageurl != null && minimageurl != null){
-//			    	partService.updatePartImage(partid,imageurl,minimageurl);
-//			    	if(createPartRequest.getForfaceimage() == 1){
-//			    		subjectService.updateSubjectForCreatePart(createPartRequest.getSubjectid(), minimageurl);
-//			    		currentSubjectEntity.setFaceimage(minimageurl);
-//			    	}else{
-//			    		subjectService.updateSubjectForCreatePart(createPartRequest.getSubjectid(), null);
-//			    	}
-//		    		//currentSubjectEntity.setFaceimage(minimageurl);
-//		    		if(MxkConstant.SUBJECT_TYPE_FOR_ALL.equals(currentSubjectEntity.getType())){
-//		    			subjectService.addSubjectJoinPeople(uservo, currentSubjectEntity.getId());
-//		    		}
-//		    		//头衔加分
-//		    		userTitleService.updatePoint(uservo.getId(), MetooPointTypeConstant.METOO_POINT_TYPE_PART, true, false);
-//			    	currentSubjectEntity.setParts(currentSubjectEntity.getParts()+1);
-//			    	super.setSessionData(MxkSessionContext.MXK_SUBJECT_CASH,currentSubjectEntity);
-//			    	NewMessagePushMessage mes = new NewMessagePushMessage();
-//			    	mes.setTragetId(partid);
-//			    	mes.setUserid(uservo.getId());
-//			    	mes.setSubjectId(currentSubjectEntity.getId());
-//			    	messageQueueService.startNewRssPushTask(mes);
-//			    }
-//			}
-//			message = MxkConstant.AJAX_SUCCESS;
-//		}else{
-//			message = MxkConstant.USER_NO_LOGIN;
-//		}
-//		return SUCCESS;
-//	}
+	public String mxkCreatePartAjax(){
+		uservo = super.getCurrentUserVO();
+		currentSubjectEntity =  subjectService.findSubjectEntityById(createPartRequest.getSubjectid());
+		if(uservo != null && currentSubjectEntity != null && valate()){
+			createPartRequest.setSubname(currentSubjectEntity.getName());
+			createPartRequest.setUserid(uservo.getId());
+			createPartRequest.setUserimage(uservo.getImage());
+			createPartRequest.setUsername(uservo.getName());
+			createPartRequest.setStatus(currentSubjectEntity.getType());
+			String partid = partService.savePart(createPartRequest);
+			if(partid != null && image != null){
+				String imageurl = gridFSFileUploadService.uploadImage(image, partid,MxkFileUploadService.IMAGE_TYPE_PNG, MxkFileUploadService.IMAGE_SIZE_FULL, max);
+				String minimageurl = gridFSFileUploadService.uploadImage(image, partid,MxkFileUploadService.IMAGE_TYPE_PNG, MxkFileUploadService.IMAGE_SIZE_MINI,min);
+			    if(imageurl != null && minimageurl != null){
+			    	partService.updatePartImage(partid,imageurl,minimageurl);
+			    	if(createPartRequest.getForfaceimage() == 1){
+			    		subjectService.updateSubjectForCreatePart(createPartRequest.getSubjectid(), minimageurl);
+			    		currentSubjectEntity.setFaceimage(minimageurl);
+			    	}else{
+			    		subjectService.updateSubjectForCreatePart(createPartRequest.getSubjectid(), null);
+			    	}
+		    		//currentSubjectEntity.setFaceimage(minimageurl);
+		    		if(MxkConstant.SUBJECT_TYPE_FOR_ALL.equals(currentSubjectEntity.getType())){
+		    			subjectService.addSubjectJoinPeople(uservo, currentSubjectEntity.getId());
+		    		}
+		    		//头衔加分
+		    		userTitleService.updatePoint(uservo.getId(), MetooPointTypeConstant.METOO_POINT_TYPE_PART, true, false);
+			    	currentSubjectEntity.setParts(currentSubjectEntity.getParts()+1);
+			    	super.setSessionData(MxkSessionContext.MXK_SUBJECT_CASH,currentSubjectEntity);
+			    	NewMessagePushMessage mes = new NewMessagePushMessage();
+			    	mes.setTragetId(partid);
+			    	mes.setUserid(uservo.getId());
+			    	mes.setSubjectId(currentSubjectEntity.getId());
+			    	messageQueueService.startNewRssPushTask(mes);
+			    }
+			}
+			message = MxkConstant.AJAX_SUCCESS;
+		}else{
+			message = MxkConstant.USER_NO_LOGIN;
+		}
+		return SUCCESS;
+	}
 //	
 //	//公共部分分享part
 //	public String mxkCreatePartBySubjectIdAjax(){
