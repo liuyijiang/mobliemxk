@@ -9,7 +9,7 @@
 <%@ include file="../public/metoo_mobile_public_header.jsp"%> 
 <div class="container">
   <c:if test="${partEntity.subjectid != '#' }">
-   <span class="span12"><small>来自专题：<a href="">${partEntity.subname }</a></small></span><br />
+   <span class="span12"><small>来自专题：<a href="">《${partEntity.subname }》</a></small></span>
   </c:if>
   <span class="span12">
     <span class="pull-left label">${partEntity.type }</span>
@@ -102,7 +102,6 @@ function deletePart(partid){
 	   });
      }
    }
-
 </script>
 </body>
 </html>

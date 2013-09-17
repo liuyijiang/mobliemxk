@@ -9,7 +9,7 @@
 <%@ include file="../public/metoo_mobile_public_header.jsp"%> 
 <div class="container">
 <span class="span12">
-   <span ><a class="btn btn-info btn-small"><i class="icon-pushpin"></i>添加Part</a></span>
+   <span ><a onclick="showCreatePart();" href="javascript:;"  class="btn btn-info btn-small"><i class="icon-pushpin"></i>添加Part</a></span>
    <span class="pull-right" >
       <c:if test="${currentSubjectEntity.highMoney == 0 }">
          <span class="label label-info"><i class="icon-jpy"></i>最高定价${currentSubjectEntity.highMoney }</span>
@@ -64,6 +64,34 @@
    </c:if>
    </span>
 </div>
+<!-- 添加part -->
+    <div id="createPartModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-header">
+	       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	       <h3>添加Part</h3>
+        </div>
+        <div class="modal-body">
+          <form id="planform" action="createProjectPlan" enctype="multipart/form-data"
+				method="post">
+			 <span>
+				 <small>选择图片</small>
+				 <img id="loading" src="<%=domain %>loadingred.gif" style="display:none">
+			 </span>
+			 <br />
+			  <input id="fileToUpload" style="width:100px" type="file" size="45" name="image"  /><br />
+			 <small>写点描述吧</small><br />
+			 <textarea id="partinfo" rows="3" style="width:96%" ></textarea>
+			 <label class="checkbox" >
+                <input type="checkbox" id="useforfaceimage" checked="checked"><span class="text-info">设为专题封面</span>
+             </label>
+          </form>
+        </div>
+	    <div class="modal-footer">
+	      <a href="javascript:;" class="btn btn-primary" onclick="ajaxFileUpload('${currentSubjectEntity.id }','${currentSubjectEntity.tags }','${uservo.id }')">发布</a>
+	      <a href="javascript:;" class="btn" onclick="closeCreatePart()">关闭</a>
+	    </div>
+    </div>
+
 <script type="text/javascript">
    var allpage = '${partShowResponse.allPage}';
    var subjectpage = 1; 
@@ -95,6 +123,55 @@
 	   $("#parts_div").append(show);
    }
 
+   function showCreatePart(){
+		 $('#createPartModal').modal({
+	       keyboard: false
+	   });
+	 }
+   
+   function closeCreatePart(){
+		 $('#createPartModal').modal('hide');
+	 }
+   
+   function ajaxFileUpload(subid,tags,username)
+	{   
+		if(true){
+			var info = $('#partinfo').val();
+			var faceimage = 1;
+			if($("#useforfaceimage").attr("checked")){
+				faceimage = 1;
+			}else{
+				faceimage = 0; 
+			}
+			var datas = {"createPartRequest.subjectid":subid,"createPartRequest.desc":info,"createPartRequest.type":tags,"createPartRequest.subname":username,"createPartRequest.forfaceimage":faceimage};
+			$("#loading").show();
+			$.ajaxFileUpload
+			(
+				{
+					url:path + "/createPart.action",
+					secureuri:false,
+					fileElementId:'fileToUpload',
+					dataType: 'json',
+					data:datas,
+					success: function (data, status)
+					{  
+						if(data.message == "success"){
+							$("#loading").hide();
+							closeCreatePart();
+			    		    window.location.href= path + "/subjectDetial?targetId="+subid;
+						}
+						
+					},
+					error: function (data, status, e)
+					{
+						$("#loading").hide();
+						alert(data.message);
+					}
+				}
+			);
+		}
+		return false;
+	}
 </script>
 <%@ include file="../../../basefootinclude.jsp"%> 
 </body>

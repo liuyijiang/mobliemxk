@@ -36,7 +36,7 @@
 					type="password" class="input-block-level" 
 					placeholder="设置密码"
 					name="userRegisterRequest.password"
-					onblur="ispass()" /><span id="passwordvaliate"></span>
+					onblur="ispass()" />
 				<br />
 				<div style="height:3px"></div>
 				<label>性别</label> 
@@ -56,7 +56,6 @@
 	  </form>
 		<button class="btn btn-primary btn-block btn-large" onclick="smb()"><i class="icon-user"></i>完成注册</button>
   </div>
-<%@ include file="../public/metoo_mobile_public_no_function_footer.jsp"%>	
 <%@ include file="../../../footinclude.jsp"%>
 	<script type="text/javascript">
    

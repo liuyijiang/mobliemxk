@@ -18,7 +18,7 @@
 				            <span class="label label-info"><i class="icon-jpy"></i>最高定价${options.highMoney }</span><br />
 				         </c:if>
 				         <c:if test="${options.qrcodeImage != null }">
-				           <img src="<%=imgurl %>/options.qrcodeImage" />
+				           <img style="width:26px;border:1px solid #ccc;" src="<%=imgurl %>${options.qrcodeImage }" />
 				         </c:if>
 			       </span>
 			       	<a href="<%=rootPath %>/vistiorShowSubjectDatail?target=${options.id}"><img src="<%=imgurl %>${options.faceimage}" /></a>
