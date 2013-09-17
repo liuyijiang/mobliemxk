@@ -54,6 +54,6 @@
    <import resource="applicationMemcashedContext.xml"/>
    <import resource="applicationActiveMqContext.xml"/>
    <import resource="applicationMailContext.xml"/>
-   <import resource="applicationQuartzJobContext.xml"/>
+<!--    <import resource="applicationQuartzJobContext.xml"/> -->
    
 </beans>
