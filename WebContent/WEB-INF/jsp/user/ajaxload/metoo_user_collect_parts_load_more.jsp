@@ -3,10 +3,8 @@
 <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c" %> 
 <%@ include file="../../../../configure.jsp"%>  	
 <div class="span12">
-  <ul class="thumbnails">
 	 <c:forEach var="options" items="${partShowResponse.list1 }">
-		<li class="mxkplan ${options.shadow }">
-			<div class="thumbnail" >
+			<div >
 			   <div style="position:relative;" >
 			       <span style="position:absolute; z-index:1; opacity: 0.8;">
 			           <c:if test="${options.highPoint != 0 }">
@@ -30,7 +28,6 @@
 				    </span>
 			    <br />
 			</div>
-	      </li>
+			<hr />
     </c:forEach>
-</ul>
 </div>	

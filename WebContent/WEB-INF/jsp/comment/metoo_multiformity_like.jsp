@@ -78,10 +78,7 @@ function creatediv(list){
 	$("#collect_div").append(show);
 }
 
-</script>
-<script type="text/javascript">
 function setlike(tragetid,trageType){
-	alert(trageType);
 	var datas = {"baseRequest.tragetid":tragetid,"baseRequest.trageType":trageType};
 	$.ajax({
    		url : path + "/setLike.action",
@@ -91,16 +88,15 @@ function setlike(tragetid,trageType){
    		data: datas,
    		dataType : "json",
    		success : function(item) {
-   			if(item == 'success'){
-	 			   alert("操作成功！");
-			    }else if( item == 'error'){
-			   	   alert("网络异常请重试");
-			    }else {
-			     	alert(item);
-			    }
+   		    if(item == 'success'){
+   		    	alert("操作成功");
+		    }else {
+		     	alert(item);
+		    }
    		 }
    });
 }
+
 </script>
 <%@ include file="../../../basefootinclude.jsp"%> 
 </body>

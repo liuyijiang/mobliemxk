@@ -3,10 +3,8 @@
 <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c" %> 
 <%@ include file="../../../../configure.jsp"%> 
 <div class="span12">
-	<ul class="thumbnails" >
 	    <c:forEach var="options" items="${visitorSearchSubjectRespone.subjectsShowResponse.list1 }">
-		  <li class="span3 mxkplan mxkshadow">
-			<div class="thumbnail">
+			<div>
 			   <div style="position:relative;" >
 			       <span style="position:absolute; z-index:1; opacity: 0.9;" >
 			            <c:if test="${options.type == 'FOR-ALL'}">
@@ -19,9 +17,9 @@
 				         <c:if test="${options.highMoney > 0 }">
 				            <span class="label label-info"><i class="icon-jpy"></i>最高定价${options.highMoney }</span><br />
 				         </c:if>
-<%-- 				         <c:if test="${options.qrcodeImage != null }"> --%>
+				         <c:if test="${options.qrcodeImage != null }">
 				           <img src="<%=imgurl %>/options.qrcodeImage" />
-<%-- 				         </c:if> --%>
+				         </c:if>
 			       </span>
 			       	<a href="<%=rootPath %>/vistiorShowSubjectDatail?target=${options.id}"><img src="<%=imgurl %>${options.faceimage}" /></a>
 			   </div>
@@ -46,7 +44,6 @@
 				    </span>
 			    <br />
 			</div>
-	      </li>
+			<hr />
 	    </c:forEach>
-	</ul>
 </div> 

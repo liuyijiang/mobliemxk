@@ -3,10 +3,8 @@
 <%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix= "c" %> 
 <%@ include file="../../../../configure.jsp"%>  	
 <div class="span12 ">
-	<ul class="thumbnails">
 		 <c:forEach var="options" items="${subjectsShowResponse.list1 }">
-	         <li class="mxkplan mxkshadow">
-	           <div class="thumbnail">
+	           <div >
 	               <div style="position:relative;" >
 			       <span style="position:absolute; z-index:1; opacity: 0.9;">
 			            <c:if test="${options.highPoint == 0 }">
@@ -25,7 +23,6 @@
 	              <span class="muted"><small>${options.info }</small></span><br />
 	               <a class="btn btn-block" href="<%=rootPath %>/subjectDetial?targetId=${options.id }"><i class="icon-edit"></i>继续编辑</a>
 	           </div>
-	         </li>
+	           <hr />
 	      </c:forEach>
-	</ul>
 </div> 
