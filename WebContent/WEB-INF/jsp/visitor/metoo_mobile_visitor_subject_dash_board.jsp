@@ -29,6 +29,13 @@
    var page = 0;  
    function loadMore(isNext){
 	   $("#loaddiv").show();
+	   //chongcookie中获得page
+// 	   var subpage = $.cookie('vsubpage');
+// 	   if(typeof subpage == "undefined"){
+// 		   page = 0;
+// 	   }else{
+// 		   page =  subpage;
+// 	   }
 	   number = parseInt(page);
 	   if(isNext){
 		   page = number + 1;
@@ -38,6 +45,7 @@
    			page = 1;
    		   }
        }
+	  // $.cookie('vsubpage',page);
 	   var datas = {"visitorSeeSubjectDashBoardRequest.page":page, "visitorSeeSubjectDashBoardRequest.parm":trags};
 	   $("#partsdivshow").load(path +'/loadMoreSubjectByPage',datas,function() {
 	    	$("#loaddiv").hide();
