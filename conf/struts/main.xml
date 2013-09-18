@@ -57,7 +57,7 @@
          
          <action name="showHelp" class="com.mxk.org.web.main.action.MxkMainAction" 
              method="mxkShowHelpView">
-            <result name="success">/WEB-INF/jsp/main/help.jsp</result>
+            <result name="success">/WEB-INF/jsp/main/metoo_help.jsp</result>
          </action> 
          
          <action name="testMail" class="com.mxk.org.web.main.action.MxkMainAction" 
