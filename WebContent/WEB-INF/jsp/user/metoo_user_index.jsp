@@ -31,9 +31,9 @@
     </span>
      <div style="height:24px"></div>
      <span class="span12">
-     <a class="btn btn-large btn-block" href="<%=rootPath %>/userSharePartsView"><i class="icon-rss-sign"></i>我的分享</a>
+     <a onclick="cleanmypartpage()" class="btn btn-large btn-block" href="<%=rootPath %>/userSharePartsView"><i class="icon-rss-sign"></i>我的分享</a>
      <a class="btn btn-large btn-block" href="<%=rootPath %>/userSubjectView"><i class="icon-hdd"></i>我的专辑</a>
-     <a class="btn btn-large btn-block" href="<%=rootPath %>/userCollectIndex"><i class="icon-pushpin"></i>我的收藏</a>
+     <a onclick="cleanmycolectpartpage()" class="btn btn-large btn-block" href="<%=rootPath %>/userCollectIndex"><i class="icon-pushpin"></i>我的收藏</a>
      <a class="btn btn-large btn-block" href="<%=rootPath %>/showUserCertificate" ><i class="icon-bookmark"></i>我的证书</a>
    </span>
 </div>
@@ -92,6 +92,16 @@ function chooseTags(tag){
 	$('#showtags').html(tag);
 	   
 }
+
+function cleanmycolectpartpage(){
+	 $.cookie('mycolectpartpage',1,{ expires: 1 });
+}
+
+function cleanmypartpage(){
+	 $.cookie('mypartpage',1,{ expires: 1 });
+}
+
+
 </script>
 <script type="text/javascript"> 
    var tags = '';

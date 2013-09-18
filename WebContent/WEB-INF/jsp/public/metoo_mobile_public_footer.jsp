@@ -4,12 +4,12 @@
 	<div class="navbar-inner">
 		<div class="container" style="text-align:center;">
 		    <div class="span12" >
-		      <button class="pull-left btn btn-inverse" onclick="loadMore(false)"><i class="icon-caret-left"></i></button>
+		      <button class="pull-left btn btn-inverse" onclick="loadMore(false,true)"><i class="icon-caret-left"></i></button>
 			  <span class="form-inline">
 			    <input class="input-mini" id="navpage" type="text" placeholder="去往">
 			    <button class="btn btn-inverse" onclick="changepage()">Go</button>
 			  </span>
-			  <button class="pull-right btn btn-inverse" onclick="loadMore(true)"><i class="icon-caret-right"></i></button>
+			  <button class="pull-right btn btn-inverse" onclick="loadMore(true,true)"><i class="icon-caret-right"></i></button>
 		    </div>
 		</div>
 	</div>

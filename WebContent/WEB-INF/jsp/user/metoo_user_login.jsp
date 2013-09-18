@@ -24,7 +24,7 @@ height:28px;
 <div class="navbar navbar-inverse navbar-fixed-top" style="opacity: 0.9;">
 	<div class="navbar-inner">
 		<div class="container" style="text-align:center;">
-			<a href="" class="pull-left btn btn-info"><i class="icon-exclamation-sign"></i>米兔</a>
+			<a href="<%=rootPath %>/showHelp" class="pull-left btn btn-info"><i class="icon-exclamation-sign"></i>米兔</a>
 		</div>
 	</div>
 </div>

@@ -5,7 +5,7 @@
 <head>
 <%@ include file="../../../headerinclude.jsp"%>  
 </head>
-<body class="mxkbody mxkbackgroud" onload="loadMore(true)">
+<body class="mxkbody mxkbackgroud" onload="loadMore(false,false)">
 <%@ include file="../public/metoo_mobile_public_header.jsp"%> 
 <div class="container">
     <div id="loaddiv" class="span12" style="text-align:center;display:none">
@@ -27,25 +27,29 @@
    var allpage = '${allpage-1}';
    var trags = '${trags}';
    var page = 0;  
-   function loadMore(isNext){
+   function loadMore(isNext,isnotfist){
 	   $("#loaddiv").show();
 	   //chongcookie中获得page
-// 	   var subpage = $.cookie('vsubpage');
-// 	   if(typeof subpage == "undefined"){
-// 		   page = 0;
-// 	   }else{
-// 		   page =  subpage;
-// 	   }
+	   var subpage = $.cookie('vsubpage');
+	   if(typeof subpage == "undefined"){
+		   page = 1;
+	   }else{
+		   page =  subpage;
+	   }
 	   number = parseInt(page);
-	   if(isNext){
-		   page = number + 1;
-   	   }else{
-   	      page = number - 1;
-   		   if(page < 0){
-   			page = 1;
-   		   }
-       }
-	  // $.cookie('vsubpage',page);
+	   if(isnotfist){
+		   if(isNext){
+			   page = number + 1;
+	   	   }else{
+	   	      page = number - 1;
+	   		   if(page < 0){
+	   			page = 1;
+	   		   }
+	       }
+	   }else{
+		   page = number;
+	   }
+	   $.cookie('vsubpage',page,{ expires: 1 });//缓存page
 	   var datas = {"visitorSeeSubjectDashBoardRequest.page":page, "visitorSeeSubjectDashBoardRequest.parm":trags};
 	   $("#partsdivshow").load(path +'/loadMoreSubjectByPage',datas,function() {
 	    	$("#loaddiv").hide();
@@ -66,7 +70,8 @@
 				targetpage = allpage;
 			}
 			page = targetpage;
-			loadMore(true);
+			$.cookie('vsubpage',page,{ expires: 1 });//缓存page
+			loadMore(true,false);
 		}
    }
    

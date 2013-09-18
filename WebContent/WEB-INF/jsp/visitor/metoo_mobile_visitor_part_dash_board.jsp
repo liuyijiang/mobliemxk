@@ -5,7 +5,7 @@
 <head>
 <%@ include file="../../../headerinclude.jsp"%>  
 </head>
-<body class="mxkbody mxkbackgroud" onload="loadMore(true)">
+<body class="mxkbody mxkbackgroud" onload="loadMore(false,false)">
 <%@ include file="../public/metoo_mobile_public_header.jsp"%> 
 <div class="container">
     <div id="loaddiv" class="span12" style="text-align:center;display:none">
@@ -32,17 +32,29 @@
    var allpage = '${allpage-1}';
    var type = '${type}';
    var page = 0;  
-   function loadMore(isNext){
+   function loadMore(isNext,isnotfist){
 	   $("#loaddiv").show();
+	   //chongcookie中获得page
+	   var partpage = $.cookie('vpartpage');
+	   if(typeof partpage == "undefined"){
+		   page = 1;
+	   }else{
+		   page =  partpage;
+	   }
 	   number = parseInt(page);
-	   if(isNext){
-		   page = number + 1;
-   	   }else{
-   	      page = number - 1;
-   		   if(page < 0){
-   			page = 1;
-   		   }
-       }
+	   if(isnotfist){
+		   if(isNext){
+			   page = number + 1;
+	   	   }else{
+	   	      page = number - 1;
+	   		   if(page < 0){
+	   			page = 1;
+	   		   }
+	       }
+	   }else{
+		   page = number;  
+	   }
+	   $.cookie('vpartpage',page,{ expires: 1 });//缓存page
 	   var datas = {"searchPartRequest.page":page,"searchPartRequest.type":type};
 	   $("#partsdivshow").load(path +'/loadMorePartsByPage',datas,function() {
 	    	$("#loaddiv").hide();
@@ -63,7 +75,8 @@
 				targetpage = allpage;
 			}
 			page = targetpage;
-			loadMore(true);
+			 $.cookie('vpartpage',page,{ expires: 1 });//缓存page
+			loadMore(true,false);
 		}
    }
    
