@@ -210,7 +210,7 @@ public class MxkMainAction extends MxkSessionAction {
 	}
 
 	public String mxkShowHelpView(){
-		uservo = super.getCurrentUserVO();
+		//uservo = super.getCurrentUserVO();
 		return SUCCESS;
 	}
 	
