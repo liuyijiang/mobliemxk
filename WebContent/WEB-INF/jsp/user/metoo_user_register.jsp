@@ -56,7 +56,7 @@
 	  </form>
 		<button class="btn btn-primary btn-block btn-large" onclick="smb()"><i class="icon-user"></i>完成注册</button>
   </div>
-<%@ include file="../../../footinclude.jsp"%>
+<%@ include file="../../../basefootinclude.jsp"%>  
 	<script type="text/javascript">
    
 	  function valiateparm(type){
@@ -99,14 +99,14 @@
 	    			emailvalidate = true;
 	    		}else{
 	    			emailvalidate = false;
-	    			alert("这个邮箱已被使用");
+	    			showCallbackmessageModal("这个邮箱已被使用");
 	    		}
 	    	}else if(type == "name"){
 	    		if(message == "success"){
 	    			namevalidate = true;
 	    		}else{
 	    			namevalidate = false;
-	    			alert("这个昵称已被使用");
+	    			showCallbackmessageModal("这个昵称已被使用");
 	    		}
 	    	}
 	    }
@@ -122,7 +122,7 @@
 		if (strEmail.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1){
 			return true;
 		}else{
-			alert("这个邮箱格式不正确");
+			showCallbackmessageModal("这个邮箱格式不正确");
 			return false;
 		}
 	  }  
@@ -132,7 +132,7 @@
 		if(parm != ""){
 			return true;
 		}else{
-			alert("昵称不能为空");
+			showCallbackmessageModal("昵称不能为空");
 			return false;
 		}
 	}
@@ -143,7 +143,7 @@
 			passbeanvalidate = true;
 		}else{
 			passbeanvalidate = false;
-			alert("密码不能为空");
+			showCallbackmessageModal("密码不能为空");
 		}
 	}
 	

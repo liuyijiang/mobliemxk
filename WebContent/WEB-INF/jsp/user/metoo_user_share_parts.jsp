@@ -62,7 +62,7 @@
 	   var targetpage = $("#navpage").val();
 	   var regu = /^[-]{0,1}[0-9]{1,}$/;
 		if (!regu.test(targetpage.trim())) {
-			alert("页数输入有误");
+			showCallbackmessageModal("页数输入有误");
 			return;
 		}else{
 			if(parseInt(targetpage) > parseInt(allpage)){

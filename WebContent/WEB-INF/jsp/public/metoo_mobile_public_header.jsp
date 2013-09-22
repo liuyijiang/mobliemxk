@@ -42,11 +42,15 @@
         <a href="javascript:;" onclick="to_search()" class="btn">查询专题</a>
       </div>
 </div>
+
+
+
 <script type="text/javascript">
+
 function to_search(){
 	 var top_parm = $("#topsearchparm").val();
 	 if(top_parm == ""){
-		 alert("请输入查询条件！");
+		 showCallbackmessageModal("请输入查询条件！");
 	 }else{
 		 cleanvsubpage();
 		 $("#top_form").submit();

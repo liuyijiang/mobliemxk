@@ -91,10 +91,10 @@ function setMoney(id){
 	var money = $("#submoney").val();
 	var datas = {"setPriceRequest.subjectid":id,"setPriceRequest.money":money};
 	if(isNaN(money)){
-		alert('请输入一个正确的金额');
+		showCallbackmessageModal('请输入一个正确的金额');
 	}else{
 	   if(money < 0){
-		   alert("这也太少了吧");
+		   showCallbackmessageModal("这也太少了吧");
 	   }else{
 		   $.ajax({
 		 		url : path + "/setPriceToSubject",
@@ -105,11 +105,11 @@ function setMoney(id){
 		 		dataType : "json",
 		 		success : function(item) {
 		 			if(item=='success'){
-		 				alert("定价成功");
+		 				showCallbackmessageModal("定价成功");
 		 			}else if(item=='error'){
-		 				alert("网络连接异常");
+		 				showCallbackmessageModal("网络连接异常");
 		 			}else{
-		 				alert(item);
+		 				showCallbackmessageModal(item);
 		 			}
 		 	    }
 		});

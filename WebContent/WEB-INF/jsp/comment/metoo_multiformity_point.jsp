@@ -108,12 +108,12 @@ function setPoint(targetId,type){
    		dataType : "json",
    		success : function(item) {
    			if(item == 'success'){
-	 			   alert("评论成功！");
+   				showCallbackmessageModal("评论成功！");
 	 			   //window.location.href= path + "/multiformityComments?type=4&traget=" + targetId;
 			    }else if( item == 'error'){
-			   	   alert("网络异常请重试");
+			    	showCallbackmessageModal("网络异常请重试");
 			    }else {
-			     	alert(item);
+			    	showCallbackmessageModal(item);
 			    }
    		 }
    });

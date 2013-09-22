@@ -9,11 +9,11 @@
 		   		dataType : "json",
 		   		success : function(item) {
 		   		    if(item == 'success'){
-		 			   alert("订阅成功！");
+		   		    	showCallbackmessageModal("订阅成功！");
 				    }else if( item == 'error'){
-				   	   alert("网络异常请重试");
+				    	showCallbackmessageModal("网络异常请重试");
 				    }else {
-				       alert(item);
+				    	showCallbackmessageModal(item);
 				    }
 		   		  }
 		 	 }); 
@@ -29,11 +29,11 @@ function createUserRelation(id){
 	   		dataType : "json",
 	   		success : function(item) {
 	   		    if(item == 'success'){
-	 			   alert("关注成功");
+	   		    	showCallbackmessageModal("关注成功");
 			    }else if( item == 'error'){
-			   	   alert("已经关注");
+			    	showCallbackmessageModal("已经关注");
 			    }else {
-			     	alert(item);
+			    	showCallbackmessageModal(item);
 			    }
 	   		  }
 	 	 });  
@@ -50,11 +50,11 @@ function collectPart(partid){
    		dataType : "json",
    		success : function(item) {
    		    if(item == 'success'){
- 			   alert("已将Part加入到你的收藏夹");
+   		    	showCallbackmessageModal("已将Part加入到你的收藏夹");
 		    }else if( item == 'error'){
-		   	   alert("网络异常请重试");
+		    	showCallbackmessageModal("网络异常请重试");
 		    }else {
-		     	alert(item);
+		    	showCallbackmessageModal(item);
 		    }
    		  }
  	 }); 
@@ -72,9 +72,9 @@ function collectPart(partid){
 	   		dataType : "json",
 	   		success : function(item) {
 	   		    if(item == 'success'){
-	   		    	alert("操作成功");
+	   		    	showCallbackmessageModal("操作成功");
 			    }else {
-			     	alert(item);
+			    	showCallbackmessageModal(item);
 			    }
 	   		 }
 	   });

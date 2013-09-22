@@ -51,21 +51,15 @@
 				 <img id="loading" src="<%=domain %>loadingred.gif" style="display:none">
 			 </span>
 			 <br />
-			 <div class="btn-group">
-                      <a class="btn dropdown-toggle btn " data-toggle="dropdown" href="javascript:;">
-                        <i class="icon-tags"></i><span id="showtags">Part标签</span>
-                      <span class="caret"></span>
-				    </a>
-				     <ul class="dropdown-menu">
-					   <li><a href="javascript:;" onclick="chooseTags('舰船模型')">舰船模型</a></li>
-					   <li><a href="javascript:;" onclick="chooseTags('装甲模型')">装甲模型</a></li>
-					   <li><a href="javascript:;" onclick="chooseTags('战机模型')">战机模型</a></li>
-					   <li><a href="javascript:;" onclick="chooseTags('手办模型')">手办模型</a></li>
-					   <li><a href="javascript:;" onclick="chooseTags('动漫模型')">动漫模型</a></li>
-					   <li><a href="javascript:;" onclick="chooseTags('高达模型')">高达模型</a></li>
-					   <li><a href="javascript:;" onclick="chooseTags('其他模型')">其他模型</a></li>
-		               </ul>
-				    </div><br />
+			 <select id="modeltype" onchange="chooseTags()">
+			    <option value="舰船模型">舰船模型</option>
+			    <option value="装甲模型">装甲模型</option>
+			    <option value="战机模型">战机模型</option>
+			    <option value="手办模型">手办模型</option>
+			    <option value="动漫模型">动漫模型</option>
+			    <option value="高达模型">高达模型</option>
+			    <option value="其他模型">其他模型</option>
+			 </select><br />
 			 <input id="fileToUpload" style="width:100px" type="file" size="45" name="image"  /><br />
 			 <small>写点描述吧</small><br />
 			 <textarea id="partinfo" rows="3" style="width:96%" ></textarea>
@@ -87,10 +81,8 @@ function closeCreatePart(){
 	 $('#createPartModal').modal('hide');
 }
 
-function chooseTags(tag){
-	tags = tag;
-	$('#showtags').html(tag);
-	   
+function chooseTags(){
+	tags = $("#modeltype").val();
 }
 
 function cleanmycolectpartpage(){
@@ -104,7 +96,7 @@ function cleanmypartpage(){
 
 </script>
 <script type="text/javascript"> 
-   var tags = '';
+   var tags = '舰船模型';
 
    function validateImage() {
   	  return true;
@@ -116,7 +108,7 @@ function cleanmypartpage(){
 		if(validateImage()){
 			var info = $('#partinfo').val();
 			if(tags == ''){
-				alert("为Part加个标签吧！");
+				showCallbackmessageModal("为Part加个标签吧！");
 				return ;
 			}
 			var datas = {"createPartRequest.desc":info,"createPartRequest.type":tags};
@@ -141,7 +133,7 @@ function cleanmypartpage(){
 					error: function (data, status, e)
 					{
 						$("#loading").hide();
-						alert(data.message);
+						showCallbackmessageModal(data.message);
 					}
 				}
 			);

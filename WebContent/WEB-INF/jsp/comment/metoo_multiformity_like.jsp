@@ -89,9 +89,9 @@ function setlike(tragetid,trageType){
    		dataType : "json",
    		success : function(item) {
    		    if(item == 'success'){
-   		    	alert("操作成功");
+   		    	showCallbackmessageModal("操作成功");
 		    }else {
-		     	alert(item);
+		    	showCallbackmessageModal(item);
 		    }
    		 }
    });

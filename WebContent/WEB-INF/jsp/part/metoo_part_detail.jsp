@@ -96,7 +96,7 @@ function deletePart(partid){
 			if(item == 'success'){
 			   window.location.href= path + "/userSharePartsView";
 		     }else{
-			   alert("操作失败");
+		    	 showCallbackmessageModal("操作失败");
 		     }
 	      }
 	   });

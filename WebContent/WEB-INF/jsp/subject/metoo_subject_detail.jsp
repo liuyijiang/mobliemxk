@@ -165,7 +165,7 @@
 					error: function (data, status, e)
 					{
 						$("#loading").hide();
-						alert(data.message);
+						showCallbackmessageModal(data.message);
 					}
 				}
 			);
