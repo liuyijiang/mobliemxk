@@ -8,6 +8,13 @@
 <body class="mxkbody mxkbackgroud" >
 <%@ include file="../public/metoo_mobile_public_header.jsp"%> 
 <div class="container">
+<c:if test="${empty certificateRespone.list1}">
+	  <div class="alert alert-block">
+	     <a class="close" data-dismiss="alert">×</a>
+	     <h4 class="alert-heading">你还没有获得证书</h4>
+	                            
+	  </div>
+    </c:if>
 <div class="span12">
     <ul class="thumbnails"> 
       <c:forEach var="options" items="${certificateRespone.list1 }"> 
